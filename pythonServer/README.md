@@ -1,1 +1,1 @@
-# emulatorPackage
+RUN THIS BEFORE THE EMULATOR
