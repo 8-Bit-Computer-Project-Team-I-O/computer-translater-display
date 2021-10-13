@@ -2,11 +2,12 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.bind(('', 9999))
+s.bind(("", 9999))
 s.listen(1)
+sock=socket.create_connection(("",9999))
 conn, addr = s.accept()
 while True:
-    print("Waiting for a message...")
+    sock.send(b"test")
     data = conn.recv(4096)
     print(data.decode('utf-8'))
+    print("Waiting for a message...")
