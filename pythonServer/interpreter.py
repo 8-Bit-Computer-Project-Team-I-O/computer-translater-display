@@ -10,6 +10,8 @@ def get_mc(values):
     return values[2]
 
 
+# DO INTERPRETATION IN HERE
 def interpret(vals_array):
-    get_mc(vals_array)
-    print(vals_array)
+    print(get_clock(vals_array))
+    if get_clock(vals_array) == "0":
+        print("Epoch passed")
