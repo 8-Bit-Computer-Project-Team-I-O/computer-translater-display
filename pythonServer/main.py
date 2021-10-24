@@ -21,8 +21,11 @@ def set_up_connection(source):
         conn, addr = s.accept()
         while True:
             data = conn.recv(4096)
+            if not data: break
             allValues = data.decode('utf-8').split('#')
             interpreter.interpret(allValues)
+        conn.close()
+        print("The client has been disconnected. Exiting the interpreter program.")
 
 
 # make a file reader
