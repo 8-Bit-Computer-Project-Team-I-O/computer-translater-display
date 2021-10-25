@@ -61,12 +61,6 @@ class Ui_Form(object):
         self.textBrowser_3 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_3.setGeometry(QtCore.QRect(60, 170, 211, 91))
 
-        if allValues[0] == 1:
-            self.textBrowser_3.setStyleSheet("background-color: rgb(255, 255, 102);")
-
-        else:
-            self.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
-
         self.textBrowser_3.setObjectName("textBrowser_3")
 
 
@@ -267,10 +261,12 @@ def set_up_connection(source, ui):
            #clock
 
             if allValues[0] == 1:
-                ui.textBrowser_3.setStyleSheet("background-color: rgb(255, 255, 102);")
+                ui.textBrowser_3.setStyleSheet("textBrowser_3 background-color: rgb(255, 255, 102);")
 
             else:
-                ui.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
+                ui.textBrowser_3.setStyleSheet("textBrowser_3 background-color: rgb(107, 107, 107);")
+
+            ui.lcdNumber.display(15)
 
 
 

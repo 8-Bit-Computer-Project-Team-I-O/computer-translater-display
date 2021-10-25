@@ -13,28 +13,6 @@ import json
 import socket
 import interpreter
 
-def set_up_connection(source):
-    # establish the base variables
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("", 9999))
-    s.listen(1)
-    # if BE architecture, we're going to get stuff from the GPIO pins, then do the interpretation in a forever loop. Add some sort of exception later
-    if (source == "True"):
-        sock = socket.create_connection(("", 9999))
-        conn, addr = s.accept()
-        while True:
-            sock.send(b"test")
-            data = conn.recv(4096)
-            allValues = data.decode('utf-8').split('#')
-            print(allValues)
-    # same as BE architecture except we're getting the connection from a Java program
-    else:
-        conn, addr = s.accept()
-        while True:
-            data = conn.recv(4096)
-            allValues = data.decode('utf-8').split('#')
-            interpreter.interpret(allValues)
-
 
 
 class Ui_Form(object):
@@ -216,6 +194,7 @@ def set_up_connection(source, ui):
         while True:
             data = conn.recv(4096)
             allValues = data.decode('utf-8').split('#')
+            interpreter.interpret(allValues)
             ui.textBrowser.setHtml(QtCore.QCoreApplication.translate("Form",
                                             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -233,6 +212,11 @@ def set_up_connection(source, ui):
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[0]+"</span></p></body></html>"))
 
+            if allValues[0] == "1":
+                ui.textBrowser_3.setStyleSheet("background-color: rgb(255, 255, 102);")
+
+            else:
+                ui.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
             QtCore.QCoreApplication.processEvents()
 
 
