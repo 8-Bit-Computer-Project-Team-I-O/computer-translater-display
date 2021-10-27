@@ -150,7 +150,7 @@ class Ui_Form(object):
                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">RAM</span></p>\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Current instruction:</span></p>\n"
+                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Current instruction:"+"2"+"</span></p>\n"
                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600; color:#ffffff;\"><br /></p></body></html>"))
         self.textBrowser_3.setHtml(_translate("Form",
                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -245,9 +245,10 @@ def set_up_connection(source, ui):
     else:
         conn, addr = s.accept()
         while True:
+            QtCore.QCoreApplication.processEvents()
             data = conn.recv(4096)
             allValues = data.decode('utf-8').split('#')
-
+            QtCore.QCoreApplication.processEvents()
             #bus
             ui.textBrowser.setHtml(QtCore.QCoreApplication.translate("Form",
                                             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -267,9 +268,6 @@ def set_up_connection(source, ui):
                 ui.textBrowser_3.setStyleSheet("textBrowser_3 background-color: rgb(107, 107, 107);")
 
             ui.lcdNumber.display(15)
-
-
-
             ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
                                                   "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                   "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -288,19 +286,6 @@ def set_up_connection(source, ui):
                                                   "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
-
-
-
-
-
-
-
-
-
-
-
-
-
             QtCore.QCoreApplication.processEvents()
 
 

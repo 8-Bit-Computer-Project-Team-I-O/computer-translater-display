@@ -1,10 +1,9 @@
 from tkinter import *
 import tkinter as tk
+from PIN import PIN
+from TypeChecker import typeassert
 import threading
 import time
-
-from .PIN import PIN
-from .TypeChecker import typeassert
 
 
 #http://www.tutorialspoint.com/python/tk_button.htm
