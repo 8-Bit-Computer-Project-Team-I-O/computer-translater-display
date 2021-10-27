@@ -15,6 +15,8 @@ import interpreter
 
 
 
+
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -33,10 +35,22 @@ class Ui_Form(object):
         self.textBrowser_2.setGeometry(QtCore.QRect(60, 310, 211, 101))
         self.textBrowser_2.setStyleSheet("background-color: rgb(107, 107, 107);")
         self.textBrowser_2.setObjectName("textBrowser_2")
+
+        #clock
+
         self.textBrowser_3 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_3.setGeometry(QtCore.QRect(60, 170, 211, 91))
-        self.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
+
+      #  if allValues[0] == 1:
+       #     self.textBrowser_3.setStyleSheet("background-color: rgb(255, 255, 102);")
+
+        #else:
+       # self.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
+
         self.textBrowser_3.setObjectName("textBrowser_3")
+
+
+
         self.textBrowser_4 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_4.setGeometry(QtCore.QRect(670, 320, 211, 91))
         self.textBrowser_4.setStyleSheet("background-color: rgb(107, 107, 107);")
@@ -47,17 +61,29 @@ class Ui_Form(object):
         self.textBrowser_5.setObjectName("textBrowser_5")
         self.textBrowser_6 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_6.setGeometry(QtCore.QRect(670, 460, 211, 91))
-        self.textBrowser_6.setStyleSheet("background-color: rgb(107, 107, 107);\n"
-                                         "font: 16pt \"MS Shell Dlg 2\";")
+        self.textBrowser_6.setStyleSheet("background-color: rgb(107, 107, 107);")
         self.textBrowser_6.setObjectName("textBrowser_6")
         self.textBrowser_7 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_7.setGeometry(QtCore.QRect(60, 460, 211, 101))
         self.textBrowser_7.setStyleSheet("background-color: rgb(107, 107, 107);")
         self.textBrowser_7.setObjectName("textBrowser_7")
         self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(10, 40, 171, 71))
-        self.pushButton.setStyleSheet("background-color: rgb(131, 0, 0);\n"
-                                      "font: 14pt \"Time New Roman\";")
+        self.pushButton.setGeometry(QtCore.QRect(30, 50, 171, 71))
+        self.pushButton.setStyleSheet(" QPushButton#pushButton {\n"
+                                      "     background-color: rgb(30, 30, 30);\n"
+                                      "     \n"
+                                      " }\n"
+                                      " QPushButton#pushButton:pressed {\n"
+                                      "     background-color: rgb(224, 0, 0);     \n"
+                                      " }\n"
+                                      " QPushButton#pushButton:hover {\n"
+                                      "     \n"
+                                      "    font: 12pt \"MS Shell Dlg 2\";\n"
+                                      "    background-color: rgb(156, 0, 0);\n"
+                                      "    \n"
+                                      " }\n"
+                                      "\n"
+                                      "")
         self.pushButton.setObjectName("pushButton")
         self.textBrowser_8 = QtWidgets.QTextBrowser(Form)
         self.textBrowser_8.setGeometry(QtCore.QRect(430, 380, 201, 101))
@@ -75,6 +101,19 @@ class Ui_Form(object):
         self.textEdit.setGeometry(QtCore.QRect(730, 610, 151, 91))
         self.textEdit.setStyleSheet("background-color: rgb(107, 107, 107);")
         self.textEdit.setObjectName("textEdit")
+        self.Carry_Flag = QtWidgets.QCheckBox(Form)
+        self.Carry_Flag.setEnabled(True)
+        self.Carry_Flag.setGeometry(QtCore.QRect(790, 635, 81, 20))
+        self.Carry_Flag.setText("")
+        self.Carry_Flag.setChecked(False)
+        self.Carry_Flag.setObjectName("Carry_Flag")
+        self.Zero_Flag = QtWidgets.QCheckBox(Form)
+        self.Zero_Flag.setGeometry(QtCore.QRect(790, 650, 81, 20))
+        self.Zero_Flag.setText("")
+        self.Zero_Flag.setObjectName("Zero_Flag")
+        self.lcdNumber = QtWidgets.QLCDNumber(Form)
+        self.lcdNumber.setGeometry(QtCore.QRect(440, 481, 171, 71))
+        self.lcdNumber.setObjectName("lcdNumber")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -82,14 +121,14 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.textBrowser.setHtml(_translate("Form",
-                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                            "p, li { white-space: pre-wrap; }\n"
-                                            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Bus</span></p>\n"
-                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Value: 0</span></p></body></html>"))
+        #self.textBrowser.setHtml(_translate("Form",
+         #                                   "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+          #                                  "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+           #                                 "p, li { white-space: pre-wrap; }\n"
+            #                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+             #                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+              #                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Bus</span></p>\n"
+               #                             "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Value: 0</span></p></body></html>"))
         self.textBrowser_2.setHtml(_translate("Form",
                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -100,13 +139,13 @@ class Ui_Form(object):
                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Current instruction:</span></p>\n"
                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600; color:#ffffff;\"><br /></p></body></html>"))
         self.textBrowser_3.setHtml(_translate("Form",
-                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                              "p, li { white-space: pre-wrap; }\n"
-                                              "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                              "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Low</span></p></body></html>"))
+                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
+                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Low</span></p></body></html>"))
         self.textBrowser_4.setHtml(_translate("Form",
                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -121,8 +160,8 @@ class Ui_Form(object):
                                               "p, li { white-space: pre-wrap; }\n"
                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600; color:#ffffff; vertical-align:super;\">Program Counter</span></p>\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff; vertical-align:super;\">Current step:</span></p></body></html>"))
+                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Program Counter</span></p>\n"
+                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Current step:</span></p></body></html>"))
         self.textBrowser_6.setHtml(_translate("Form",
                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -194,7 +233,8 @@ def set_up_connection(source, ui):
         while True:
             data = conn.recv(4096)
             allValues = data.decode('utf-8').split('#')
-            interpreter.interpret(allValues)
+
+            #bus
             ui.textBrowser.setHtml(QtCore.QCoreApplication.translate("Form",
                                             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -203,6 +243,10 @@ def set_up_connection(source, ui):
                                             "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                             "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Bus</span></p>\n"
                                             "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">Value:"+allValues[1]+"</span></p></body></html>"))
+
+           #clock
+
+
             ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
                                                   "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                   "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -212,11 +256,40 @@ def set_up_connection(source, ui):
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[0]+"</span></p></body></html>"))
 
+            #memory
+            ui.textBrowser_7.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                  "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                  "p, li { white-space: pre-wrap; }\n"
+                                                  "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                                  "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                  "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
+                                                  "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
+
+
+
+
+
             if allValues[0] == "1":
-                ui.textBrowser_3.setStyleSheet("background-color: rgb(255, 255, 102);")
+                ui.textBrowser_3.setStyleSheet(QtCore.QCoreApplication.translate("form","background-color: rgb(255, 255, 204);"))
+                ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">"+allValues[0]+"</span></p></body></html>"))
+
+
 
             else:
-                ui.textBrowser_3.setStyleSheet("background-color: rgb(107, 107, 107);")
+                ui.textBrowser_3.setStyleSheet(QtCore.QCoreApplication.translate("form","background-color: rgb(107, 107, 107);"))
+
+            QtCore.QCoreApplication.processEvents()
+
+
+
+
+
+
+
             QtCore.QCoreApplication.processEvents()
 
 
