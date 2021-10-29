@@ -13,6 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 import socket
 import interpreter
+from EmulatorGUI import GPIO
 
 
 
@@ -313,16 +314,28 @@ def set_up_connection(source, ui):
     s.listen(1)
     # if BE architecture, we're going to get stuff from the GPIO pins, then do the interpretation in a forever loop. Add some sort of exception later
     if (source == "True"):
-        sock = socket.create_connection(("", 9999))
-        conn, addr = s.accept()
+
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(20, GPIO.IN)
+        GPIO.setup(16, GPIO.IN)
+        GPIO.setup(12, GPIO.IN)
+        GPIO.setup(4, GPIO.IN)
+        GPIO.setup(7, GPIO.IN)
+        GPIO.setup(8, GPIO.IN)
+        GPIO.setup(25, GPIO.IN)
+        GPIO.setup(23, GPIO.IN)
+        GPIO.setup(10,GPIO.IN)
         while True:
-            sock.send(b"test")
-            data = conn.recv(4096)
-            allValues = data.decode('utf-8').split('#')
-            interpreter.interpret(allValues)
+            bus_Val=str(int(GPIO.input(23)))+str(int(GPIO.input(25)))+str(int(GPIO.input(8)))+str(int(GPIO.input(7)))+str(int(GPIO.input(4)))+str(int(GPIO.input(12)))+str(int(GPIO.input(16)))+str(int(GPIO.input(20)))
+            clock_Val=GPIO.input(10)
+            mcVal="0000000000000000"
+            valsArr=[clock_Val,bus_Val,mcVal]
+            ui.lcdNumber_3.display(valsArr[1])
             QtCore.QCoreApplication.processEvents()
     # same as BE architecture except we're getting the connection from a Java program
     else:
+        sock = socket.create_connection(("", 9999))
+        conn, addr = s.accept()
         conn, addr = s.accept()
         while True:
             data = conn.recv(4096)
