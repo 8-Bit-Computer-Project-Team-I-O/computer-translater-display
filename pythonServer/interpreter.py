@@ -96,7 +96,7 @@ def get_clock(values):
         else:
             voltage = 'high epoch'
             return voltage
-    #return values[0]
+    # return values[0]
 
 
 def get_bus(values):
@@ -135,7 +135,7 @@ def get_mc(values):
             microcode = 'RO,II,CE'
             instruction = 'FETCH'
             print("Microcode Instructions: " + microcode)
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # NOP cycle test
         if '0000000000000000' in values and a_mc == '':
@@ -154,7 +154,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'NOP'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # LDA cycle test
         if '0100100000000000' in values and a_mc == '':
@@ -173,7 +173,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'LDA'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # ADD cycle test
         if '0100100000000000' in values and a_mc == '':
@@ -192,7 +192,7 @@ def get_mc(values):
             microcode = 'AI,ΣO'
             instruction = 'ADD'
             print("Microcode Instructions: " + microcode)
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # SUB cycle test
         if '0100100000000000' in values and a_mc == '':
@@ -211,7 +211,7 @@ def get_mc(values):
             microcode = 'AI,ΣO,SU'
             instruction = 'SUB'
             print("Microcode Instructions: " + microcode)
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # STA cycle test
         if '0100100000000000' in values and a_mc == '':
@@ -230,7 +230,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'STA'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # LDI cycle test
         if '0000101000000000' in values and a_mc == '':
@@ -249,7 +249,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'LDI'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # JMP cycle test
         if '0000100000000010' in values and a_mc == '':
@@ -268,7 +268,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'JMP'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # OUT cycle test
         if '0000000100010000' in values and a_mc == '':
@@ -287,7 +287,7 @@ def get_mc(values):
             microcode = ''
             instruction = 'OUT'
             print("Microcode Instructions: None")
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
 
         # HLT cycle test
         if '1000000000000000' in values:  # and a_mc == '':
@@ -295,7 +295,7 @@ def get_mc(values):
             microcode = 'HLT'
             instruction = 'HLT'
             print("Microcode Instructions: " + microcode)
-            return("Instruction: " + instruction)
+            return ("Instruction: " + instruction)
         # elif '0000000000000000' in values and a_mc == '1000000000000000' and b_mc == '':
         #     b_mc = '0000000000000000'
         #     microcode = ''
@@ -317,16 +317,76 @@ def get_mc(values):
     #     print("ERROR: INVALID INSTRUCTION, EXITING PROGRAM")
     #     exit(1)
 
-    #return values[2]
+    # return values[2]
 
 
-def interpret(vals_array):
-    print(vals_array)
-    print(get_clock(vals_array))
-    #print(get_bus(vals_array))
-    print(get_mc(vals_array))
-    
-# # DO INTERPRETATION IN HERE
+def convert_binary_to_int(mc_code, vals_array, json_vals):
+    # the last index of the array the key leads to says the number of bits
+    number_of_bits = json_vals[mc_code][vals_array[2]][2]
+    # all 8 bits or the lower 4 bits
+    starting_point = 8 - number_of_bits
+    current_bus_val = get_bus(vals_array)
+    int_conversion = int(current_bus_val[starting_point:8], 2)
+    return int_conversion
+
+
+def interpret(vals_array, json_vals):
+    # check which microcode values to use
+    if json_vals["BE Architecture"] == "False":
+        mc_code = "micro_code_eater"
+    else:
+        mc_code = "micro_code_bastian"
+    # get the current microcode values based on its current binary value
+    current_mc = json_vals[mc_code][vals_array[2]][0]
+    json_vals["ui_variables"]["bus"] = int(get_bus(vals_array), 2)
+    # this is a special case where a string gets output to the instruction register, the rest are digits
+    if current_mc == "RO,II,CE":
+        # get the upper 4 bits of the current bus value
+        current_control_word = str(json_vals["control_words"][vals_array[1][0:4]])
+        # get the lower 4 bits of the current bus value
+        addressVal = vals_array[1][4:8]
+        # fill in the associated control word interpretation with the lower 4 bus bits to representing the address
+        current_control_word = current_control_word.replace("#", str(int(addressVal, 2)))
+        #int(binary_string, 2)
+
+        # get the associated ui variable name assiciated with the micro code value
+        current_change = json_vals[mc_code][vals_array[2]][1]
+
+        # change that in the ui variable dict
+        json_vals["ui_variables"][current_change] = current_control_word
+
+        # if clock epoch is high, counter is incremented
+        if get_clock(vals_array) == "high epoch":
+            json_vals["ui_variables"]["program_counter"] += 1
+
+    # for every other case
+    else:
+
+        # get the value that is currently being changed base on the current microcode binary
+        current_change = json_vals[mc_code][vals_array[2]][1]
+        # for most other value changes, very simply just convert the current bus binary and hold it in it's
+        # respective dict placement
+        if current_change != "none":
+            json_vals["ui_variables"][current_change] = convert_binary_to_int(mc_code, vals_array, json_vals)
+        # if the subtraction flag is set, subtract the current a nd b values, store them in the alu, then put them in a
+        elif current_change == "a_register sub":
+            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] - \
+                                                        json_vals["ui_variables"]["b_register"]
+
+            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["sum_register"]
+
+        # if the current change is none, we don't want to change any of the values associated with the micro code
+        else:
+            print("Do nothing")
+        # if the current change is the b_register or the a_register, we are also changing what is in the sum register
+        if current_change == "b_register" or current_change == "a_register":
+            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] + \
+                                                        json_vals["ui_variables"]["b_register"]
+    print(json_vals["ui_variables"])
+    json_vals["ui_variables"]["laymans"] = json_vals[mc_code][vals_array[2]][3]
+    return json_vals
+
+# DO INTERPRETATION IN HERE
 # def interpret(vals_array):
 #     print(get_clock(vals_array))
 #     if get_clock(vals_array) == "0":
