@@ -91,10 +91,10 @@ def get_clock(values):
     for x in values:
         if x == '0':
             # epoch passed, discern between low and high epoch for now
-            voltage = 'low epoch'
+            voltage = 'Low Epoch'
             return voltage
         else:
-            voltage = 'high epoch'
+            voltage = 'High Epoch'
             return voltage
     # return values[0]
 
@@ -135,17 +135,19 @@ def interpret(vals_array, json_vals):
         mc_code = "micro_code_bastian"
     # get the current microcode values based on its current binary value
     current_mc = json_vals[mc_code][vals_array[2]][0]
+
     # this is a special case where a string gets output to the instruction register, the rest are digits
     if current_mc == "RO,II,CE":
         # get the upper 4 bits of the current bus value
         current_control_word = str(json_vals["control_words"][vals_array[1][0:4]])
+
         # get the lower 4 bits of the current bus value
         addressVal = vals_array[1][4:8]
+
         # fill in the associated control word interpretation with the lower 4 bus bits to representing the address
         current_control_word = current_control_word.replace("#", str(int(addressVal, 2)))
-        #int(binary_string, 2)
 
-        # get the associated ui variable name assiciated with the micro code value
+        # get the associated ui variable name associated with the micro code value
         current_change = json_vals[mc_code][vals_array[2]][1]
 
         # change that in the ui variable dict
@@ -165,25 +167,126 @@ def interpret(vals_array, json_vals):
         # respective dict placement
         if current_change != "none":
             json_vals["ui_variables"]["bus"] = convert_binary_to_int(mc_code, vals_array, json_vals)
-            json_vals["ui_variables"][current_change] = convert_binary_to_int(mc_code, vals_array, json_vals)
 
-            # when these micro code values are being run, it gives us a look into what is currently being stored in the ram, so fill ram values with the respective bus value
-            if (json_vals["micro_code_eater"][vals_array[2]][0] == "RO, AI" or json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI" or json_vals["micro_code_eater"][vals_array[2]][0] == "RI, AO"):
-                current_ram_address=json_vals["ui_variables"]["memory_address_register"]
-                json_vals["ui_variables"][str(current_ram_address)]=json_vals["ui_variables"][current_change]
+            # the values are only actually changed to what is on the bus when the epoch is high
+            if get_clock(vals_array) == "High Epoch":
+                json_vals["ui_variables"][current_change] = convert_binary_to_int(mc_code, vals_array, json_vals)
+
+            # when these micro code values are being run, it gives us a look into what is currently being stored in the
+            # ram, so fill ram values with the respective bus value
+
+            if (json_vals["micro_code_eater"][vals_array[2]][0] == "RO, AI" or
+                    json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI" or
+                    json_vals["micro_code_eater"][vals_array[2]][0] == "RI, AO"):
+                current_ram_address = json_vals["ui_variables"]["memory_address_register"]
+                json_vals["ui_variables"][str(current_ram_address)] = json_vals["ui_variables"][current_change]
         # if the current change is none, we don't want to change any of the values associated with the micro code
         else:
             print("Do nothing")
-        # if the current change is the b_register or the a_register, we are also changing what is in the sum register, only do it if the epoch is high or else it will over add or subtract
-        if current_change == "b_register" or current_change == "a_register" and get_clock(vals_array) == "high epoch":
-            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] + \
-                                                        json_vals["ui_variables"]["b_register"]
-            # if the subtraction flag is set, subtract the current a nd b values, store them in the alu, then put them in the a register
-        elif current_change == "a_register sub" and get_clock(vals_array) == "high epoch":
+            json_vals["ui_variables"]["bus"] = convert_binary_to_int(mc_code, vals_array, json_vals)
+
+        # if the current change is the b_register or the a_register, we are also changing what is in the sum register
+        # this will set it so that in case the subtraction flag gets set, it will only reupdate the sume register when
+        # something gets put inside a or b to line up with how the computer actually works.
+
+        # if the epoch is high, this is when the current change has been put into either the A or B register and
+        # now needs to be represented on the sum register accordingly
+        if current_change == "a_register" or current_change == "b_register" and get_clock(vals_array) == "High Epoch":
+            sum_reg = json_vals["ui_variables"]["a_register"] + \
+                      json_vals["ui_variables"]["b_register"]
+
+            # this works almost exactly like the computer itself. If the current sum register value was
+            # carried or equals zero, turn on a toggle bit that will send a value to the respective
+            # flag register if the bit is set when sending the sum to the A register
+            # note to add some if statements for if 2's complement is turned on
+            if sum_reg > 255:
+                # toggle the bit saying that the sum has been carried
+                json_vals["ui_variables"]["carry_flag_toggle"] = 1
+
+                # save what the carried value is
+                sum_reg = sum_reg - 256
+
+            else:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 0
+
+            if sum_reg == 0:
+                # toggle the bit saying that the sum is zero
+                json_vals["ui_variables"]["zero_flag_toggle"] = 1
+
+            else:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 0
+
+            # update the sum register value in case it has changed
+            json_vals["ui_variables"]["sum_register"] = sum_reg
+
+        # If the subtract flag is set, we need to represent and refactor the
+        #sum register and toggle bits now
+
+        if current_change == "a_register sub" and get_clock(vals_array) == "Low Epoch":
+            # store a reference to the current subtraction
+            sum_reg = json_vals["ui_variables"]["a_register"] - \
+                      json_vals["ui_variables"]["b_register"]
+
+            # toggle the right bits
+            if sum_reg < 0:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 1
+                sum_reg = sum_reg + 256
+            else:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 0
+
+            if sum_reg == 0:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 0
+
+            # update sum register and a register
+            json_vals["ui_variables"]["sum_register"] = sum_reg
+
+        # if the subtraction flag is set and the voltage is high, we simply set any flags that there might be
+        # and update the a register along with the sum register after the a register's value has been changed
+        if current_change == "a_register sub" and get_clock(vals_array) == "High Epoch":
+
+            if json_vals["ui_variables"]["carry_flag_toggle"] == 1:
+                json_vals["ui_variables"]["carry_flag"] = 1
+            else:
+                json_vals["ui_variables"]["carry_flag"] = 0
+
+            if json_vals["ui_variables"]["zero_flag_toggle"] == 1:
+                json_vals["ui_variables"]["zero_flag"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag"] = 0
+
+            # update sum register and a register
+            json_vals["ui_variables"]["a_register"] = json_vals["ui_variables"]["sum_register"]
             json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] - \
                                                         json_vals["ui_variables"]["b_register"]
 
+        # if the microcode is just sum out and the epoch is high, there is no bookkeeping that needs to be done.
+        # we only have to look at the toggled bits and set the respective flag registers
+        if current_change == "a_register add" and get_clock(vals_array) == "High Epoch":
+
+            # if the current sum register value was carried, set the carry flag, otherwise lift it
+            if json_vals["ui_variables"]["carry_flag_toggle"] == 1:
+                json_vals["ui_variables"]["carry_flag"] = 1
+            else:
+                json_vals["ui_variables"]["carry_flag"] = 0
+
+            # if the current sum register value is zero, set the zero flag, otherwise lift it
+            if json_vals["ui_variables"]["zero_flag_toggle"] == 1:
+                json_vals["ui_variables"]["zero_flag"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag"] = 0
+
+            # update sum register and a register
             json_vals["ui_variables"]["a_register"] = json_vals["ui_variables"]["sum_register"]
+            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] + \
+                                                        json_vals["ui_variables"]["b_register"]
+
     print(json_vals["ui_variables"])
-    json_vals["ui_variables"]["laymans"] = json_vals[mc_code][vals_array[2]][3]
+
+    # Update the layman's terms box to represent the current microcode operation every time.
+    json_vals["ui_variables"]["laymans"] = str(json_vals[mc_code][vals_array[2]][3]).replace("#", str(
+        json_vals["ui_variables"]["memory_address_register"]))
+
+    # return the updated dictionary
     return json_vals

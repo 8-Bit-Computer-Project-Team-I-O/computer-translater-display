@@ -327,15 +327,26 @@ def set_up_connection(source, ui, json_values):
             allValues = data.decode('utf-8').split('#')
 
             current_clock=allValues[0]
+            # to avoid over-interpretation and wrong results, only run the interpreter
+            # and update results on every voltage switch
+            # THIS PART IS IMPORTANT!! If it does not check for the current voltage and only update
+            # when the voltage changes, it could produce wrong results when we bring this over to the GPIO
             if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (current_clock == "1" and previous_clock == "0"):
                 json_values = interpreter.interpret(allValues, json_values)
                 previous_clock = current_clock
-                # Constants
-                # Bus
+                # Bus update
                 ui.lcdNumber_3.display(json_values["ui_variables"]["bus"])
 
-                # instruction register
-                # Instruction Register
+                # A register update
+                ui.lcdNumber_4.display(json_values["ui_variables"]["a_register"])
+
+                #B register update
+                ui.lcdNumber_2.display(json_values["ui_variables"]["b_register"])
+
+                #Output register update
+                ui.lcdNumber.display(json_values["ui_variables"]["output_register"])
+
+                # Instruction Register update
                 ui.textBrowser_10.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -346,7 +357,7 @@ def set_up_connection(source, ui, json_values):
                                                                             json_values["ui_variables"][
                                                                                 "instruction_register"] + "</p></body></html>"))
 
-                # layman's intepretation
+                # layman's intepretation update
                 ui.textBrowser_9.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -361,7 +372,7 @@ def set_up_connection(source, ui, json_values):
                                                                                             "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
                                                                                             "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
 
-                # Clock
+                # Clock update
                 ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
