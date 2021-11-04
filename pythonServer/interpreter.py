@@ -155,7 +155,7 @@ def interpret(vals_array, json_vals):
         json_vals["ui_variables"][str(json_vals["ui_variables"]["memory_address_register"])] = current_control_word
         json_vals["ui_variables"]["bus"] = int(addressVal, 2)
         # if clock epoch is high, counter is incremented
-        if get_clock(vals_array) == "high epoch":
+        if get_clock(vals_array) == "High Epoch":
             json_vals["ui_variables"]["program_counter"] += 1
 
     # for every other case
@@ -258,8 +258,23 @@ def interpret(vals_array, json_vals):
 
             # update sum register and a register
             json_vals["ui_variables"]["a_register"] = json_vals["ui_variables"]["sum_register"]
-            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] - \
+            sum_reg = json_vals["ui_variables"]["a_register"] - \
                                                         json_vals["ui_variables"]["b_register"]
+            # update any changes after the subtraction
+            # toggle the right bits
+            if sum_reg < 0:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 1
+                sum_reg = sum_reg + 256
+            else:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 0
+
+            if sum_reg == 0:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 0
+
+            # update sum register and a register
+            json_vals["ui_variables"]["sum_register"] = sum_reg
 
         # if the microcode is just sum out and the epoch is high, there is no bookkeeping that needs to be done.
         # we only have to look at the toggled bits and set the respective flag registers
@@ -288,5 +303,4 @@ def interpret(vals_array, json_vals):
     json_vals["ui_variables"]["laymans"] = str(json_vals[mc_code][vals_array[2]][3]).replace("#", str(
         json_vals["ui_variables"]["memory_address_register"]))
 
-    # return the updated dictionary
     return json_vals

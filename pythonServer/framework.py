@@ -331,6 +331,7 @@ def set_up_connection(source, ui, json_values):
             except socket.timeout:
                 allValues = allValues
             finally:
+                allValues[2] = str(allValues[2][0:16])
                 #print(allValues[0])
                 #print(allValues[1])
                 #print(allValues[2])
@@ -380,6 +381,12 @@ def set_up_connection(source, ui, json_values):
                                                                                    "laymans"] + "</span></p>\n"
                                                                                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
                                                                                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
+                    # carry flag update
+                    ui.Carry_Flag.setChecked(bool(json_values["ui_variables"]["carry_flag"]))
+
+                    # zero flag update
+                    ui.Zero_Flag.setChecked(bool(json_values["ui_variables"]["zero_flag"]))
+
 
                     # Clock update
                     ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
