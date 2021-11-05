@@ -422,7 +422,8 @@ def set_up_connection(source, ui, json_values):
                     #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
                     #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
                 QtCore.QCoreApplication.processEvents()
-
+        conn.close()
+        print("The client has been disconnected. Exiting the interpreter program.")
 
 if __name__ == "__main__":
     import sys
