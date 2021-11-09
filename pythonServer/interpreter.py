@@ -143,14 +143,8 @@ def interpret(vals_array, json_vals):
 
         # get the lower 4 bits of the current bus value
         addressVal = vals_array[1][4:8]
-
         # fill in the associated control word interpretation with the lower 4 bus bits to representing the address
         current_control_word = current_control_word.replace("#", str(int(addressVal, 2)))
-
-        if current_control_word == "0101":
-            # if 2's complement is on, need to turn those lower 4 bits into 2's complement conversion
-            if json_vals["twosComplement"] == "True":
-                print("yes indeed!")
 
 
         # get the associated ui variable name associated with the micro code value
@@ -185,7 +179,10 @@ def interpret(vals_array, json_vals):
             if (json_vals["micro_code_eater"][vals_array[2]][0] == "RO, AI" or
                     json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI"):
                 current_ram_address = json_vals["ui_variables"]["memory_address_register"]
-                json_vals["ui_variables"][str(current_ram_address)] = json_vals["ui_variables"][current_change]
+                current_value = json_vals["ui_variables"][current_change]
+                if current_value > 127:
+                    current_value -= 256
+                json_vals["ui_variables"][str(current_ram_address)] = current_value
         # if the current change is none, we don't want to change any of the values associated with the micro code
         else:
             print("Do nothing")
@@ -228,11 +225,15 @@ def interpret(vals_array, json_vals):
         # If the subtract flag is set, we need to represent and refactor the
         #sum register and toggle bits now
 
-        if current_change == "#":
+        if current_change == "#" and get_clock(vals_array) == "High Epoch":
             current_ram_address = json_vals["ui_variables"]["memory_address_register"]
 
-            # THIS REQUIRES A 2'S COMPLEMENT CHECK.
-            json_vals["ui_variables"][str(current_ram_address)] = json_vals["ui_variables"]["bus"]
+            # THIS REQUIRES A 2'S COMPLEMENT CHECK, only gets updated everytime .
+            current_bus_val=json_vals["ui_variables"]["bus"]
+            if current_bus_val > 127:
+                current_bus_val -= 256
+
+            json_vals["ui_variables"][str(current_ram_address)] = current_bus_val
 
         if current_change == "a_register sub" and get_clock(vals_array) == "Low Epoch":
             # store a reference to the current subtraction
@@ -310,17 +311,37 @@ def interpret(vals_array, json_vals):
                                                         json_vals["ui_variables"]["b_register"]
 
     if json_vals["twosComplement"] == "True":
-        # just update the displayed values everytime. The overhead is minimal and we don't have to sift through code to find when they get updated
-        json_vals["ui_variables"]["a_register_display"] = json_vals["ui_variables"]["a_register"]
-        json_vals["ui_variables"]["b_register_display"] = json_vals["ui_variables"]["b_register"]
-        json_vals["ui_variables"]["sum_register_display"] = json_vals["ui_variables"]["sum_register"]
-        # Only update the bus value if it directly pertains to an integer value going into the a register, b register, Output register, or some ram register
+        if json_vals["ui_variables"]["a_register"] > 127:
+            json_vals["ui_variables"]["a_register_display"] = json_vals["ui_variables"]["a_register"] - 256
+        else:
+            json_vals["ui_variables"]["a_register_display"] = json_vals["ui_variables"]["a_register"]
+
+        if json_vals["ui_variables"]["b_register"] > 127:
+            json_vals["ui_variables"]["b_register_display"] = json_vals["ui_variables"]["b_register"] - 256
+        else:
+            json_vals["ui_variables"]["b_register_display"] = json_vals["ui_variables"]["b_register"]
+
+        if json_vals["ui_variables"]["sum_register"] > 127:
+            json_vals["ui_variables"]["sum_register_display"] = json_vals["ui_variables"]["sum_register"] - 256
+        else:
+            json_vals["ui_variables"]["sum_register_display"] = json_vals["ui_variables"]["sum_register"]
+
+
+        # Only update the bus value's two's complement if it directly pertains to an integer value going into the a register, b register, Output register, or some ram register
         if current_change=="a_register" or current_change=="b_register" or current_change == "output_register" or current_change == "#":
-            json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"]["bus"]
+            if json_vals["ui_variables"]["bus"] > 127:
+                json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"][
+                                                                           "bus"] - 256
+            else:
+                json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"]["bus"]
         else:
             json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"]["bus"]
-        if json_vals["ui_variables"]["output_register"] > 128:
-            json_vals["ui_variables"]["output_register_display"] = 127-json_vals["ui_variables"]["output_register"]
+
+        # two's complement for the output register
+        if json_vals["ui_variables"]["output_register"] > 127:
+            json_vals["ui_variables"]["output_register_display"] = json_vals["ui_variables"]["output_register"]-256
+        else:
+            json_vals["ui_variables"]["output_register_display"] = json_vals["ui_variables"]["output_register"]
     else:
         # the values do not change at all when two's complement is disabled. Just make them equal to the actual value.
         json_vals["ui_variables"]["a_register_display"] = json_vals["ui_variables"]["a_register"]

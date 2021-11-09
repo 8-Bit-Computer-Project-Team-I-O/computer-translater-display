@@ -1,6 +1,8 @@
 {
   "BE Architecture": "False",
+
   "twosComplement": "False",
+
   "control_words":{
       "0000": ["No operation (NOP)", "NO-OP"],
       "0001": ["Load value in memory address # in register A (LDA)", "LOAD TO A"],
