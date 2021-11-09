@@ -12,9 +12,17 @@ from random import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 import socket
+
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QApplication, QShortcut
+
 import interpreter
+import keyboard
 from EmulatorGUI import GPIO
+
 try_setup = True
+
+
 class Ui_Form(object):
     styleSheet = """
             MainWindow {
@@ -23,6 +31,10 @@ class Ui_Form(object):
             background-position: center;
             }
     """
+
+    def closeEvent(self, event):
+        print("User has clicked the red x on the main window")
+        event.accept()
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -80,7 +92,10 @@ class Ui_Form(object):
 
         # Cancel button
         self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setShortcut(QKeySequence('Ctrl+O'))
         self.pushButton.setGeometry(QtCore.QRect(30, 50, 171, 71))
+        self.pushButton.setCheckable(True)
+        self.pushButton.setChecked(False)
         self.pushButton.setStyleSheet(" QPushButton#pushButton {\n"
                                       "     background-color: rgba(30, 30, 30, 250);\n"
                                       "     \n"
@@ -296,7 +311,7 @@ class Ui_Form(object):
                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Output</span></p></body></html>"))
 
 
-def set_up_connection(source, ui, json_values):
+def set_up_connection(source, ui, json_values, app, Form):
     # establish the base variables
     # if BE architecture, we're going to get stuff from the GPIO pins, then do the interpretation in a forever loop. Add some sort of exception later
     if (source == "True"):
@@ -321,98 +336,99 @@ def set_up_connection(source, ui, json_values):
         conn.settimeout(.001)
         allValues = ["0", "00000000", "0000000000000000"]
         while True:
-                allValues[2] = str(allValues[2][0:16])
-                # print(allValues[0])
-                # print(allValues[1])
-                # print(allValues[2])
-                current_clock = allValues[0]
-                # to avoid over-interpretation and wrong results, only run the interpreter
-                # and update results on every voltage switch
-                # THIS PART IS IMPORTANT!! If it does not check for the current voltage and only update
-                # when the voltage changes, it could produce wrong results when we bring this over to the GPIO
-                if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
-                        current_clock == "1" and previous_clock == "0"):
-                    json_values = interpreter.interpret(allValues, json_values)
-                    previous_clock = current_clock
-                    # Bus update
-                    ui.lcdNumber_3.display(json_values["ui_variables"]["bus_display"])
+            allValues[2] = str(allValues[2][0:16])
+            # print(allValues[0])
+            # print(allValues[1])
+            # print(allValues[2])
+            current_clock = allValues[0]
+            # to avoid over-interpretation and wrong results, only run the interpreter
+            # and update results on every voltage switch
+            # THIS PART IS IMPORTANT!! If it does not check for the current voltage and only update
+            # when the voltage changes, it could produce wrong results when we bring this over to the GPIO
+            if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
+                    current_clock == "1" and previous_clock == "0"):
+                json_values = interpreter.interpret(allValues, json_values)
+                previous_clock = current_clock
+                # Bus update
+                ui.lcdNumber_3.display(json_values["ui_variables"]["bus_display"])
 
-                    # A register update
-                    ui.lcdNumber_4.display(json_values["ui_variables"]["a_register_display"])
+                # A register update
+                ui.lcdNumber_4.display(json_values["ui_variables"]["a_register_display"])
 
-                    # B register update
-                    ui.lcdNumber_2.display(json_values["ui_variables"]["b_register_display"])
+                # B register update
+                ui.lcdNumber_2.display(json_values["ui_variables"]["b_register_display"])
 
-                    # Output register update
-                    ui.lcdNumber.display(json_values["ui_variables"]["output_register_display"])
+                # Output register update
+                ui.lcdNumber.display(json_values["ui_variables"]["output_register_display"])
 
-                    ui.lcdNumber_5.display(json_values["ui_variables"]["program_counter"])
+                ui.lcdNumber_5.display(json_values["ui_variables"]["program_counter"])
 
-                    # Instruction Register update
-                    ui.textBrowser_10.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                                "p, li { white-space: pre-wrap; }\n"
-                                                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Instruction Register</span></p>\n"
-                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br />" +
-                                                                                json_values["ui_variables"][
-                                                                                    "instruction_register"] + "</p></body></html>"))
+                # Instruction Register update
+                ui.textBrowser_10.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                                            "p, li { white-space: pre-wrap; }\n"
+                                                                            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Instruction Register</span></p>\n"
+                                                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br />" +
+                                                                            json_values["ui_variables"][
+                                                                                "instruction_register"] + "</p></body></html>"))
 
-                    # layman's intepretation update
-                    ui.textBrowser_9.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                               "p, li { white-space: pre-wrap; }\n"
-                                                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">" +
-                                                                               json_values["ui_variables"][
-                                                                                   "laymans"] + "</span></p>\n"
-                                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
-                                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
-                    # carry flag update
-                    ui.Carry_Flag.setChecked(bool(json_values["ui_variables"]["carry_flag"]))
+                # layman's intepretation update
+                ui.textBrowser_9.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                                           "p, li { white-space: pre-wrap; }\n"
+                                                                           "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">" +
+                                                                           json_values["ui_variables"][
+                                                                               "laymans"] + "</span></p>\n"
+                                                                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
+                                                                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
+                # carry flag update
+                ui.Carry_Flag.setChecked(bool(json_values["ui_variables"]["carry_flag"]))
 
-                    # zero flag update
-                    ui.Zero_Flag.setChecked(bool(json_values["ui_variables"]["zero_flag"]))
+                # zero flag update
+                ui.Zero_Flag.setChecked(bool(json_values["ui_variables"]["zero_flag"]))
 
-                    # Clock update
+                # Clock update
+                ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                                           "p, li { white-space: pre-wrap; }\n"
+                                                                           "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                                                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
+                if allValues[0] == "1":
+                    ui.textBrowser_3.setStyleSheet(
+                        QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
                     ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                               "p, li { white-space: pre-wrap; }\n"
-                                                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
-                    if allValues[0] == "1":
-                        ui.textBrowser_3.setStyleSheet(
-                            QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
-                        ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                                   "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
 
-                    # laymans' interpretation
-                    else:
-                        ui.textBrowser_3.setStyleSheet(
-                            QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
+                # laymans' interpretation
+                else:
+                    ui.textBrowser_3.setStyleSheet(
+                        QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
 
-                    # Switch statement begins
+                # Switch statement begins
 
-                    # memory
-                    #    ui.textBrowser_7.setHtml(QtCore.QCoreApplication.translate("Form",
-                    #                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                    #                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                    #                                        "p, li { white-space: pre-wrap; }\n"
-                    #                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                    #                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                    #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
-                    #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
-                QtCore.QCoreApplication.processEvents()
+                # memory
+                #    ui.textBrowser_7.setHtml(QtCore.QCoreApplication.translate("Form",
+                #                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                #                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                #                                        "p, li { white-space: pre-wrap; }\n"
+                #                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+                #                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
+                #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
+            QtCore.QCoreApplication.processEvents()
+            QtGui.QGuiApplication.quitOnLastWindowClosed()
     # same as BE architecture except we're getting the connection from a Java program
     else:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -424,8 +440,10 @@ def set_up_connection(source, ui, json_values):
         previous_clock = None
         conn.settimeout(.001)
         allValues = ["0", "00000000", "0000000000000000"]
-        while True:
 
+        while True:
+            if(Form.isHidden()):
+                break
             try:
                 data = conn.recv(4096)
                 allValues = data.decode('utf-8').split('#')
@@ -434,6 +452,7 @@ def set_up_connection(source, ui, json_values):
             except socket.error:
                 break
             finally:
+
                 allValues[2] = str(allValues[2][0:16])
                 # print(allValues[0])
                 # print(allValues[1])
@@ -445,6 +464,7 @@ def set_up_connection(source, ui, json_values):
                 # when the voltage changes, it could produce wrong results when we bring this over to the GPIO
                 if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
                         current_clock == "1" and previous_clock == "0"):
+
                     json_values = interpreter.interpret(allValues, json_values)
                     previous_clock = current_clock
                     # Bus update
@@ -525,7 +545,9 @@ def set_up_connection(source, ui, json_values):
                     #                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                     #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
                     #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
+
                 QtCore.QCoreApplication.processEvents()
+
         conn.close()
         try_setup = False
         print("closed connection")
@@ -547,11 +569,8 @@ if __name__ == "__main__":
     ui.setupUi(Form)
     Form.show()
     # make a file reader
-    f = open('data.json', )
+    f = open('data.json')
     # load the json values into a variable
     json_vals = json.load(f)
-    if try_setup:
-        set_up_connection(json_vals["BE Architecture"], ui, json_vals)
-    if app.lastWindowClosed():
-        sys.exit(app.exec_())
-    sys.exit(app.exec_())
+    set_up_connection(json_vals["BE Architecture"], ui, json_vals, app, Form)
+    sys.exit(0)
