@@ -17,6 +17,13 @@ from EmulatorGUI import GPIO
 
 
 class Ui_Form(object):
+    styleSheet = """
+            MainWindow {
+            background-image: url("https://i.stack.imgur.com/TAJQ8.png"); 
+            background-repeat: no-repeat; 
+            background-position: center;
+            }
+    """
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(900, 800)
@@ -422,13 +429,19 @@ def set_up_connection(source, ui, json_values):
                     #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
                     #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
                 QtCore.QCoreApplication.processEvents()
-        conn.close()
-        print("The client has been disconnected. Exiting the interpreter program.")
+
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyleSheet("""
+            MainWindow {
+            background-image: url("https://i.stack.imgur.com/TAJQ8.png"); 
+            background-repeat: no-repeat; 
+            background-position: center;
+            }
+    """)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form)
