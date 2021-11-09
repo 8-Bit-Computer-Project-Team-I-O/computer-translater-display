@@ -111,12 +111,6 @@ microcode = ''
 instruction = ''
 
 
-def get_mc(values):
-    # microcode values, array of 16
-
-    global voltage
-
-
 def convert_binary_to_int(mc_code, vals_array, json_vals):
     # the last index of the array the key leads to says the number of bits
     number_of_bits = json_vals[mc_code][vals_array[2]][2]
@@ -146,7 +140,6 @@ def interpret(vals_array, json_vals):
         # fill in the associated control word interpretation with the lower 4 bus bits to representing the address
         current_control_word = current_control_word.replace("#", str(int(addressVal, 2)))
 
-
         # get the associated ui variable name associated with the micro code value
         current_change = json_vals[mc_code][vals_array[2]][1]
 
@@ -175,7 +168,7 @@ def interpret(vals_array, json_vals):
             # when these micro code values are being run, it gives us a look into what is currently being stored in the
             # ram, so fill ram values with the respective bus value
 
-            #ALSO REQUIRES A 2'S COMPLEMENT CHECK.
+            # ALSO REQUIRES A 2'S COMPLEMENT CHECK.
             if (json_vals["micro_code_eater"][vals_array[2]][0] == "RO, AI" or
                     json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI"):
                 current_ram_address = json_vals["ui_variables"]["memory_address_register"]
@@ -223,13 +216,13 @@ def interpret(vals_array, json_vals):
             json_vals["ui_variables"]["sum_register"] = sum_reg
 
         # If the subtract flag is set, we need to represent and refactor the
-        #sum register and toggle bits now
+        # sum register and toggle bits now
 
         if current_change == "#" and get_clock(vals_array) == "High Epoch":
             current_ram_address = json_vals["ui_variables"]["memory_address_register"]
 
             # THIS REQUIRES A 2'S COMPLEMENT CHECK, only gets updated everytime .
-            current_bus_val=json_vals["ui_variables"]["bus"]
+            current_bus_val = json_vals["ui_variables"]["bus"]
             if current_bus_val > 127:
                 current_bus_val -= 256
 
@@ -272,7 +265,7 @@ def interpret(vals_array, json_vals):
             # update sum register and a register
             json_vals["ui_variables"]["a_register"] = json_vals["ui_variables"]["sum_register"]
             sum_reg = json_vals["ui_variables"]["a_register"] - \
-                                                        json_vals["ui_variables"]["b_register"]
+                      json_vals["ui_variables"]["b_register"]
             # update any changes after the subtraction
             # toggle the right bits
             if sum_reg < 0:
@@ -326,12 +319,12 @@ def interpret(vals_array, json_vals):
         else:
             json_vals["ui_variables"]["sum_register_display"] = json_vals["ui_variables"]["sum_register"]
 
-
-        # Only update the bus value's two's complement if it directly pertains to an integer value going into the a register, b register, Output register, or some ram register
-        if current_change=="a_register" or current_change == "a_register sub" or current_change == "a_register add" or current_change=="b_register" or current_change == "output_register" or current_change == "#":
+        # Only update the bus value's two's complement if it directly pertains to an integer value going into the a
+        # register, b register, Output register, or some ram register
+        if current_change == "a_register" or current_change == "a_register sub" or current_change == "a_register add" or current_change == "b_register" or current_change == "output_register" or current_change == "#":
             if json_vals["ui_variables"]["bus"] > 127:
                 json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"][
-                                                                           "bus"] - 256
+                                                               "bus"] - 256
             else:
                 json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"]["bus"]
         else:
@@ -339,7 +332,7 @@ def interpret(vals_array, json_vals):
 
         # two's complement for the output register
         if json_vals["ui_variables"]["output_register"] > 127:
-            json_vals["ui_variables"]["output_register_display"] = json_vals["ui_variables"]["output_register"]-256
+            json_vals["ui_variables"]["output_register_display"] = json_vals["ui_variables"]["output_register"] - 256
         else:
             json_vals["ui_variables"]["output_register_display"] = json_vals["ui_variables"]["output_register"]
     else:
