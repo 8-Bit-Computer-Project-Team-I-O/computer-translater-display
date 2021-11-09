@@ -328,7 +328,7 @@ def interpret(vals_array, json_vals):
 
 
         # Only update the bus value's two's complement if it directly pertains to an integer value going into the a register, b register, Output register, or some ram register
-        if current_change=="a_register" or current_change=="b_register" or current_change == "output_register" or current_change == "#":
+        if current_change=="a_register" or current_change == "a_register sub" or current_change == "a_register add" or current_change=="b_register" or current_change == "output_register" or current_change == "#":
             if json_vals["ui_variables"]["bus"] > 127:
                 json_vals["ui_variables"]["bus_display"] = json_vals["ui_variables"][
                                                                            "bus"] - 256

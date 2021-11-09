@@ -352,16 +352,19 @@ def set_up_connection(source, ui, json_values):
                     json_values = interpreter.interpret(allValues, json_values)
                     previous_clock = current_clock
                     # Bus update
-                    ui.lcdNumber_3.display(json_values["ui_variables"]["bus"])
+                    ui.lcdNumber_3.display(json_values["ui_variables"]["bus_display"])
 
                     # A register update
-                    ui.lcdNumber_4.display(json_values["ui_variables"]["a_register"])
+                    ui.lcdNumber_4.display(json_values["ui_variables"]["a_register_display"])
 
                     # B register update
-                    ui.lcdNumber_2.display(json_values["ui_variables"]["b_register"])
+                    ui.lcdNumber_2.display(json_values["ui_variables"]["b_register_display"])
 
                     # Output register update
-                    ui.lcdNumber.display(json_values["ui_variables"]["output_register"])
+                    ui.lcdNumber.display(json_values["ui_variables"]["output_register_display"])
+
+
+                    ui.lcdNumber_5.display(json_values["ui_variables"]["program_counter"])
 
                     # Instruction Register update
                     ui.textBrowser_10.setHtml(QtCore.QCoreApplication.translate("Form",

@@ -1,7 +1,7 @@
 {
   "BE Architecture": "False",
 
-  "twosComplement": "False",
+  "twosComplement": "True",
 
   "control_words":{
       "0000": ["No operation (NOP)", "NO-OP"],
@@ -35,7 +35,7 @@
     "0000101000000000": ["IO,AI", "a_register", 4, "Load the value # from the instruction register into the A register"],
     "0000100000000010": ["IO, J", "program_counter", 4, "Jump to address # in memory"],
     "0000000100010000": ["AO,OI", "output_register", 8, "Send the value in the A register to the output register"],
-    "1000000000000000": ["HLT", "none", 0, "Stop operation of the computer"]
+    "1000000000000000": ["HLT", "none", 8, "Stop operation of the computer"]
   },
 
 
