@@ -144,7 +144,7 @@ def interpret(vals_array, json_vals):
         current_change = json_vals[mc_code][vals_array[2]][1]
 
         # change that in the ui variable dict
-        json_vals["ui_variables"][str(json_vals["ui_variables"]["memory_address_register"])] = current_control_word
+        json_vals["ui_variables"][str(json_vals["ui_variables"]["memory_address_register"])] = str(json_vals["control_words"][vals_array[1][0:4]][1])
         json_vals["ui_variables"]["bus"] = int(addressVal, 2)
         # if clock epoch is high, counter is incremented
         if get_clock(vals_array) == "High Epoch":

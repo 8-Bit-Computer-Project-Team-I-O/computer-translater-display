@@ -661,6 +661,12 @@ def set_up_connection(source, ui, json_values, app, Form):
                 if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
                         current_clock == "1" and previous_clock == "0"):
 
+                    # update current clock value
+                    if current_clock == "1":
+                        json_values["ui_variables"]["clock_pulse"] = "High Voltage"
+                    else:
+                        json_values["ui_variables"]["clock_pulse"] = "Low Voltage"
+
                     json_values = interpreter.interpret(allValues, json_values)
                     previous_clock = current_clock
                     # Bus update
@@ -675,8 +681,8 @@ def set_up_connection(source, ui, json_values, app, Form):
                     # Output register update
                     ui.Output_LCD.display(json_values["ui_variables"]["output_register_display"])
 
-                    #Sum register update
-                    ui.Output_LCD.display(json_values["ui_variables"]["sum_register_display"])
+                    # Sum register update
+                    ui.Sum_LCD.display(json_values["ui_variables"]["sum_register_display"])
 
                     #Program Counter update
                     ui.Program_Counter_LCD.display(json_values["ui_variables"]["program_counter"])
