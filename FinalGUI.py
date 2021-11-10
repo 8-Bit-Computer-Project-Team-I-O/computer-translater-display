@@ -675,6 +675,10 @@ def set_up_connection(source, ui, json_values, app, Form):
                     # Output register update
                     ui.Output_LCD.display(json_values["ui_variables"]["output_register_display"])
 
+                    #Sum register update
+                    ui.Output_LCD.display(json_values["ui_variables"]["sum_register_display"])
+
+                    #Program Counter update
                     ui.Program_Counter_LCD.display(json_values["ui_variables"]["program_counter"])
 
                     # Instruction Register update
