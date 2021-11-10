@@ -17,8 +17,7 @@ from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QApplication, QShortcut
 
 import interpreter
-import keyboard
-from EmulatorGUI import GPIO
+#from EmulatorGUI import GPIO
 
 try_setup = True
 
@@ -311,21 +310,21 @@ class Ui_Form(object):
                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Output</span></p></body></html>"))
 
 
-def set_up_connection(source, ui, json_values, app, Form):
-    # establish the base variables
-    # if BE architecture, we're going to get stuff from the GPIO pins, then do the interpretation in a forever loop. Add some sort of exception later
+def set_up_connection(source, ui, json_values, Form):
+    # establish the base variables if BE architecture, we're going to get stuff from the GPIO pins, then do the
+    # interpretation in a forever loop. Add some sort of exception later
     if (source == "True"):
 
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(20, GPIO.IN)
-        GPIO.setup(16, GPIO.IN)
-        GPIO.setup(12, GPIO.IN)
-        GPIO.setup(4, GPIO.IN)
-        GPIO.setup(7, GPIO.IN)
-        GPIO.setup(8, GPIO.IN)
-        GPIO.setup(25, GPIO.IN)
-        GPIO.setup(23, GPIO.IN)
-        GPIO.setup(10, GPIO.IN)
+        #GPIO.setmode(GPIO.BCM)
+        #GPIO.setup(20, GPIO.IN)
+        #GPIO.setup(16, GPIO.IN)
+        #GPIO.setup(12, GPIO.IN)
+        #GPIO.setup(4, GPIO.IN)
+        #GPIO.setup(7, GPIO.IN)
+        #GPIO.setup(8, GPIO.IN)
+        #GPIO.setup(25, GPIO.IN)
+        #GPIO.setup(23, GPIO.IN)
+        #GPIO.setup(10, GPIO.IN)
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(("", 9999))
         s.listen(1)
@@ -428,7 +427,6 @@ def set_up_connection(source, ui, json_values, app, Form):
                 #                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Memory</span></p>\n"
                 #                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">"+allValues[2]+"</span></p></body></html>"))
             QtCore.QCoreApplication.processEvents()
-            QtGui.QGuiApplication.quitOnLastWindowClosed()
     # same as BE architecture except we're getting the connection from a Java program
     else:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -572,5 +570,5 @@ if __name__ == "__main__":
     f = open('data.json')
     # load the json values into a variable
     json_vals = json.load(f)
-    set_up_connection(json_vals["BE Architecture"], ui, json_vals, app, Form)
+    set_up_connection(json_vals["BE Architecture"], ui, json_vals, Form)
     sys.exit(0)
