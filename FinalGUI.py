@@ -730,6 +730,10 @@ def set_up_connection(source, ui, json_values, app, Form):
                         ui.Clock_Text.setStyleSheet(
                             QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
 
+                        ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
+                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
 
                     QtCore.QCoreApplication.processEvents()
 
