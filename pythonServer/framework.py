@@ -414,6 +414,10 @@ def set_up_connection(source, ui, json_values, Form):
                 else:
                     ui.textBrowser_3.setStyleSheet(
                         QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
+                    ui.textBrowser_3.setHtml(QtCore.QCoreApplication.translate("Form",
+                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
 
                 # Switch statement begins
 
