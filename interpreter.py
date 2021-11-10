@@ -91,10 +91,10 @@ def get_clock(values):
     for x in values:
         if x == '0':
             # epoch passed, discern between low and high epoch for now
-            voltage = 'Low Epoch'
+            voltage = 'Low Voltage'
             return voltage
         else:
-            voltage = 'High Epoch'
+            voltage = 'High Voltage'
             return voltage
     # return values[0]
 
@@ -123,6 +123,10 @@ def convert_binary_to_int(mc_code, vals_array, json_vals):
 
 def interpret(vals_array, json_vals):
     # check which microcode values to use
+    if vals_array[0] =="0":
+        json_vals["ui_variables"]["clock_pulse"] = "Low Voltage"
+    else:
+        json_vals["ui_variables"]["clock_pulse"] = "High Voltage"
     if json_vals["BE Architecture"] == "False":
         mc_code = "micro_code_eater"
     else:

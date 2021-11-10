@@ -605,14 +605,14 @@ def set_up_connection(source, ui, json_values, app, Form):
                                                                            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
                                                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
                 if allValues[0] == "1":
                     ui.Clock_Text.setStyleSheet(
                         QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
                     ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
 
                 # laymans' interpretation
                 else:
@@ -621,7 +621,7 @@ def set_up_connection(source, ui, json_values, app, Form):
                     ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                             "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                             "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
 
             QtCore.QCoreApplication.processEvents()
             QtGui.QGuiApplication.quitOnLastWindowClosed()
@@ -716,14 +716,14 @@ def set_up_connection(source, ui, json_values, app, Form):
                                                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
                                                                                "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
                     if allValues[0] == "1":
                         ui.Clock_Text.setStyleSheet(
                             QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
                         ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                                    "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
 
 
                     else:
@@ -733,9 +733,9 @@ def set_up_connection(source, ui, json_values, app, Form):
                         ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
                                                                                 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                                                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
+                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + json_values["ui_variables"]["clock_pulse"] + "</span></p></body></html>"))
 
-                    QtCore.QCoreApplication.processEvents()
+                QtCore.QCoreApplication.processEvents()
 
         conn.close()
         try_setup = False

@@ -41,6 +41,7 @@
 
 
   "ui_variables":{
+    "clock_pulse": "No Voltage",
     "memory_address_register": 0,
     "instruction_register": "",
     "a_register": 0,
