@@ -58,7 +58,7 @@ class Ui_Form(object):
         self.Bus_LCD.setObjectName("Bus_LCD")
 
         self.Ram_Contents = QtWidgets.QTextBrowser(Form)
-        self.Ram_Contents.setGeometry(QtCore.QRect(10, 330, 621, 451))
+        self.Ram_Contents.setGeometry(QtCore.QRect(40, 390, 561, 291))
         self.Ram_Contents.setStyleSheet("background-color: rgba(125, 125, 125, 210);")
         self.Ram_Contents.setObjectName("Ram_Contents")
 
@@ -76,40 +76,40 @@ class Ui_Form(object):
         self.Program_Counter_LCD.setObjectName("Program_Counter_LCD")
 
         self.Memory_Instruction = QtWidgets.QTextBrowser(Form)
-        self.Memory_Instruction.setGeometry(QtCore.QRect(190, 170, 261, 131))
+        self.Memory_Instruction.setGeometry(QtCore.QRect(190, 190, 261, 131))
         self.Memory_Instruction.setStyleSheet("background-color: rgba(107, 107, 107, 200);")
         self.Memory_Instruction.setObjectName("Memory_Instruction")
         self.Memory_LCD = QtWidgets.QLCDNumber(Form)
-        self.Memory_LCD.setGeometry(QtCore.QRect(220, 220, 181, 51))
+        self.Memory_LCD.setGeometry(QtCore.QRect(220, 240, 181, 51))
         self.Memory_LCD.setObjectName("Memory_LCD")
 
         self.State_Description_Text = QtWidgets.QTextBrowser(Form)
-        self.State_Description_Text.setGeometry(QtCore.QRect(460, 810, 681, 111))
+        self.State_Description_Text.setGeometry(QtCore.QRect(520, 780, 681, 141))
         self.State_Description_Text.setStyleSheet("background-color: rgba(222, 222, 222, 210);")
         self.State_Description_Text.setObjectName("State_Description_Text")
 
         self.Instruction_Register = QtWidgets.QTextBrowser(Form)
-        self.Instruction_Register.setGeometry(QtCore.QRect(90, 810, 311, 51))
+        self.Instruction_Register.setGeometry(QtCore.QRect(150, 750, 311, 51))
         self.Instruction_Register.setStyleSheet("background-color: rgba(107, 107, 107, 200);")
         self.Instruction_Register.setFont(QFont('Arial', 24))
         self.Instruction_Register.setObjectName("Instruction_Register")
         self.Instruction_Text = QtWidgets.QTextBrowser(Form)
-        self.Instruction_Text.setGeometry(QtCore.QRect(90, 860, 311, 161))
+        self.Instruction_Text.setGeometry(QtCore.QRect(150, 800, 311, 161))
         self.Instruction_Text.setStyleSheet("background-color: rgba(107, 107, 107, 200);")
         self.Instruction_Text.setObjectName("Instruction_Text")
 
         self.Flag_Register = QtWidgets.QTextEdit(Form)
-        self.Flag_Register.setGeometry(QtCore.QRect(1210, 810, 171, 121))
+        self.Flag_Register.setGeometry(QtCore.QRect(1270, 810, 171, 121))
         self.Flag_Register.setStyleSheet("background-color: rgba(107, 107, 107, 200);")
         self.Flag_Register.setObjectName("Flag_Register")
         self.Carry_Flag = QtWidgets.QCheckBox(Form)
         self.Carry_Flag.setEnabled(True)
-        self.Carry_Flag.setGeometry(QtCore.QRect(1270, 870, 81, 20))
+        self.Carry_Flag.setGeometry(QtCore.QRect(1330, 870, 81, 20))
         self.Carry_Flag.setText("")
         self.Carry_Flag.setChecked(True)
         self.Carry_Flag.setObjectName("Carry_Flag")
         self.Zero_Flag = QtWidgets.QCheckBox(Form)
-        self.Zero_Flag.setGeometry(QtCore.QRect(1270, 890, 81, 20))
+        self.Zero_Flag.setGeometry(QtCore.QRect(1330, 890, 81, 20))
         self.Zero_Flag.setText("")
         self.Zero_Flag.setChecked(True)
         self.Zero_Flag.setObjectName("Zero_Flag")
@@ -152,141 +152,134 @@ class Ui_Form(object):
         self.Sum_LCD.setGeometry(QtCore.QRect(60, 180, 161, 41))
         self.Sum_LCD.setObjectName("Sum_LCD")
 
-<<<<<<< HEAD
         self.RR_2 = QtWidgets.QTextBrowser(Form)
         self.RR_2.setGeometry(QtCore.QRect(40, 470, 81, 31))
         self.RR_2.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_2.setObjectName("RR_2")
-=======
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
         self.RR_1 = QtWidgets.QTextBrowser(Form)
-        self.RR_1.setGeometry(QtCore.QRect(10, 430, 71, 51))
+        self.RR_1.setGeometry(QtCore.QRect(40, 440, 81, 31))
         self.RR_1.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_1.setObjectName("RR_1")
-        self.RR_0 = QtWidgets.QTextBrowser(Form)
-        self.RR_0.setGeometry(QtCore.QRect(10, 380, 71, 51))
-        self.RR_0.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_0.setObjectName("RR_0")
-        self.RR_2 = QtWidgets.QTextBrowser(Form)
-        self.RR_2.setGeometry(QtCore.QRect(10, 480, 71, 51))
-        self.RR_2.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_2.setObjectName("RR_2")
         self.RR_3 = QtWidgets.QTextBrowser(Form)
-        self.RR_3.setGeometry(QtCore.QRect(10, 530, 71, 51))
+        self.RR_3.setGeometry(QtCore.QRect(40, 500, 81, 31))
         self.RR_3.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_3.setObjectName("RR_3")
-        self.RR_5 = QtWidgets.QTextBrowser(Form)
-        self.RR_5.setGeometry(QtCore.QRect(10, 630, 71, 51))
-        self.RR_5.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_5.setObjectName("RR_5")
+        self.RR_4 = QtWidgets.QTextBrowser(Form)
+        self.RR_4.setGeometry(QtCore.QRect(40, 530, 81, 31))
+        self.RR_4.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_4.setObjectName("RR_4")
         self.RR_6 = QtWidgets.QTextBrowser(Form)
-        self.RR_6.setGeometry(QtCore.QRect(10, 680, 71, 51))
+        self.RR_6.setGeometry(QtCore.QRect(40, 590, 81, 31))
         self.RR_6.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_6.setObjectName("RR_6")
         self.RR_7 = QtWidgets.QTextBrowser(Form)
-        self.RR_7.setGeometry(QtCore.QRect(10, 730, 71, 51))
+        self.RR_7.setGeometry(QtCore.QRect(40, 620, 81, 31))
         self.RR_7.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_7.setObjectName("RR_7")
-        self.RR_4 = QtWidgets.QTextBrowser(Form)
-        self.RR_4.setGeometry(QtCore.QRect(10, 580, 71, 51))
-        self.RR_4.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_4.setObjectName("RR_4")
-        self.RR_6_6 = QtWidgets.QTextBrowser(Form)
-        self.RR_6_6.setGeometry(QtCore.QRect(80, 680, 241, 51))
-        self.RR_6_6.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_6_6.setObjectName("RR_6_6")
-        self.RR_3_3 = QtWidgets.QTextBrowser(Form)
-        self.RR_3_3.setGeometry(QtCore.QRect(80, 530, 241, 51))
-        self.RR_3_3.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_3_3.setObjectName("RR_3_3")
+        self.RR_8 = QtWidgets.QTextBrowser(Form)
+        self.RR_8.setGeometry(QtCore.QRect(40, 650, 81, 31))
+        self.RR_8.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_8.setObjectName("RR_8")
+        self.RR_5 = QtWidgets.QTextBrowser(Form)
+        self.RR_5.setGeometry(QtCore.QRect(40, 560, 81, 31))
+        self.RR_5.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_5.setObjectName("RR_5")
         self.RR_7_7 = QtWidgets.QTextBrowser(Form)
-        self.RR_7_7.setGeometry(QtCore.QRect(80, 730, 241, 51))
+        self.RR_7_7.setGeometry(QtCore.QRect(120, 620, 201, 31))
         self.RR_7_7.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_7_7.setObjectName("RR_7_7")
-        self.RR_2_2 = QtWidgets.QTextBrowser(Form)
-        self.RR_2_2.setGeometry(QtCore.QRect(80, 480, 241, 51))
-        self.RR_2_2.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_2_2.setObjectName("RR_2_2")
         self.RR_4_4 = QtWidgets.QTextBrowser(Form)
-        self.RR_4_4.setGeometry(QtCore.QRect(80, 580, 241, 51))
+        self.RR_4_4.setGeometry(QtCore.QRect(120, 530, 201, 31))
         self.RR_4_4.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_4_4.setObjectName("RR_4_4")
         self.RR_8_8 = QtWidgets.QTextBrowser(Form)
-        self.RR_8_8.setGeometry(QtCore.QRect(390, 380, 241, 51))
+        self.RR_8_8.setGeometry(QtCore.QRect(120, 650, 201, 31))
         self.RR_8_8.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_8_8.setObjectName("RR_8_8")
+        self.RR_3_3 = QtWidgets.QTextBrowser(Form)
+        self.RR_3_3.setGeometry(QtCore.QRect(120, 500, 201, 31))
+        self.RR_3_3.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_3_3.setObjectName("RR_3_3")
         self.RR_5_5 = QtWidgets.QTextBrowser(Form)
-        self.RR_5_5.setGeometry(QtCore.QRect(80, 630, 241, 51))
+        self.RR_5_5.setGeometry(QtCore.QRect(120, 560, 201, 31))
         self.RR_5_5.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_5_5.setObjectName("RR_5_5")
-        self.RR_0_0 = QtWidgets.QTextBrowser(Form)
-        self.RR_0_0.setGeometry(QtCore.QRect(80, 380, 241, 51))
-        self.RR_0_0.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_0_0.setObjectName("RR_0_0")
-        self.RR_13_13 = QtWidgets.QTextBrowser(Form)
-        self.RR_13_13.setGeometry(QtCore.QRect(390, 630, 241, 51))
-        self.RR_13_13.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_13_13.setObjectName("RR_13_13")
-        self.RR_14 = QtWidgets.QTextBrowser(Form)
-        self.RR_14.setGeometry(QtCore.QRect(320, 680, 71, 51))
-        self.RR_14.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_14.setObjectName("RR_14")
-        self.RR_10_10 = QtWidgets.QTextBrowser(Form)
-        self.RR_10_10.setGeometry(QtCore.QRect(390, 480, 241, 51))
-        self.RR_10_10.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_10_10.setObjectName("RR_10_10")
-        self.RR_11 = QtWidgets.QTextBrowser(Form)
-        self.RR_11.setGeometry(QtCore.QRect(320, 530, 71, 51))
-        self.RR_11.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_11.setObjectName("RR_11")
+        self.RR_1_1 = QtWidgets.QTextBrowser(Form)
+        self.RR_1_1.setGeometry(QtCore.QRect(120, 440, 201, 31))
+        self.RR_1_1.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_1_1.setObjectName("RR_1_1")
+        self.RR_6_6 = QtWidgets.QTextBrowser(Form)
+        self.RR_6_6.setGeometry(QtCore.QRect(120, 590, 201, 31))
+        self.RR_6_6.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_6_6.setObjectName("RR_6_6")
+        self.RR_2_2 = QtWidgets.QTextBrowser(Form)
+        self.RR_2_2.setGeometry(QtCore.QRect(120, 470, 201, 31))
+        self.RR_2_2.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_2_2.setObjectName("RR_2_2")
         self.RR_14_14 = QtWidgets.QTextBrowser(Form)
-        self.RR_14_14.setGeometry(QtCore.QRect(390, 680, 241, 51))
+        self.RR_14_14.setGeometry(QtCore.QRect(400, 590, 201, 31))
         self.RR_14_14.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_14_14.setObjectName("RR_14_14")
         self.RR_15 = QtWidgets.QTextBrowser(Form)
-        self.RR_15.setGeometry(QtCore.QRect(320, 730, 71, 51))
+        self.RR_15.setGeometry(QtCore.QRect(320, 620, 81, 31))
         self.RR_15.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
         self.RR_15.setObjectName("RR_15")
-        self.RR_10 = QtWidgets.QTextBrowser(Form)
-        self.RR_10.setGeometry(QtCore.QRect(320, 480, 71, 51))
-        self.RR_10.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_10.setObjectName("RR_10")
-        self.RR_15_15 = QtWidgets.QTextBrowser(Form)
-        self.RR_15_15.setGeometry(QtCore.QRect(390, 730, 241, 51))
-        self.RR_15_15.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_15_15.setObjectName("RR_15_15")
-        self.RR_12 = QtWidgets.QTextBrowser(Form)
-        self.RR_12.setGeometry(QtCore.QRect(320, 580, 71, 51))
-        self.RR_12.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_12.setObjectName("RR_12")
-        self.RR_8 = QtWidgets.QTextBrowser(Form)
-        self.RR_8.setGeometry(QtCore.QRect(320, 380, 71, 51))
-        self.RR_8.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_8.setObjectName("RR_8")
-        self.RR_9_9 = QtWidgets.QTextBrowser(Form)
-        self.RR_9_9.setGeometry(QtCore.QRect(390, 430, 241, 51))
-        self.RR_9_9.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_9_9.setObjectName("RR_9_9")
-        self.RR_12_12 = QtWidgets.QTextBrowser(Form)
-        self.RR_12_12.setGeometry(QtCore.QRect(390, 580, 241, 51))
-        self.RR_12_12.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_12_12.setObjectName("RR_12_12")
-        self.RR_13 = QtWidgets.QTextBrowser(Form)
-        self.RR_13.setGeometry(QtCore.QRect(320, 630, 71, 51))
-        self.RR_13.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_13.setObjectName("RR_13")
-        self.RR_1_1 = QtWidgets.QTextBrowser(Form)
-        self.RR_1_1.setGeometry(QtCore.QRect(80, 430, 241, 51))
-        self.RR_1_1.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
-        self.RR_1_1.setObjectName("RR_1_1")
-        self.RR_9 = QtWidgets.QTextBrowser(Form)
-        self.RR_9.setGeometry(QtCore.QRect(320, 430, 71, 51))
-        self.RR_9.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
-        self.RR_9.setObjectName("RR_9")
         self.RR_11_11 = QtWidgets.QTextBrowser(Form)
-        self.RR_11_11.setGeometry(QtCore.QRect(390, 530, 241, 51))
+        self.RR_11_11.setGeometry(QtCore.QRect(400, 500, 201, 31))
         self.RR_11_11.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
         self.RR_11_11.setObjectName("RR_11_11")
+        self.RR_12 = QtWidgets.QTextBrowser(Form)
+        self.RR_12.setGeometry(QtCore.QRect(320, 530, 81, 31))
+        self.RR_12.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_12.setObjectName("RR_12")
+        self.RR_15_15 = QtWidgets.QTextBrowser(Form)
+        self.RR_15_15.setGeometry(QtCore.QRect(400, 620, 201, 31))
+        self.RR_15_15.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_15_15.setObjectName("RR_15_15")
+        self.RR_16 = QtWidgets.QTextBrowser(Form)
+        self.RR_16.setGeometry(QtCore.QRect(320, 650, 81, 31))
+        self.RR_16.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_16.setObjectName("RR_16")
+        self.RR_11 = QtWidgets.QTextBrowser(Form)
+        self.RR_11.setGeometry(QtCore.QRect(320, 500, 81, 31))
+        self.RR_11.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_11.setObjectName("RR_11")
+        self.RR_16_16 = QtWidgets.QTextBrowser(Form)
+        self.RR_16_16.setGeometry(QtCore.QRect(400, 650, 201, 31))
+        self.RR_16_16.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_16_16.setObjectName("RR_16_16")
+        self.RR_13 = QtWidgets.QTextBrowser(Form)
+        self.RR_13.setGeometry(QtCore.QRect(320, 560, 81, 31))
+        self.RR_13.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_13.setObjectName("RR_13")
+        self.RR_9 = QtWidgets.QTextBrowser(Form)
+        self.RR_9.setGeometry(QtCore.QRect(320, 440, 81, 31))
+        self.RR_9.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_9.setObjectName("RR_9")
+        self.RR_10_10 = QtWidgets.QTextBrowser(Form)
+        self.RR_10_10.setGeometry(QtCore.QRect(400, 470, 201, 31))
+        self.RR_10_10.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_10_10.setObjectName("RR_10_10")
+        self.RR_13_13 = QtWidgets.QTextBrowser(Form)
+        self.RR_13_13.setGeometry(QtCore.QRect(400, 560, 201, 31))
+        self.RR_13_13.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_13_13.setObjectName("RR_13_13")
+        self.RR_14 = QtWidgets.QTextBrowser(Form)
+        self.RR_14.setGeometry(QtCore.QRect(320, 590, 81, 31))
+        self.RR_14.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_14.setObjectName("RR_14")
+        self.RR_9_9 = QtWidgets.QTextBrowser(Form)
+        self.RR_9_9.setGeometry(QtCore.QRect(400, 440, 201, 31))
+        self.RR_9_9.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_9_9.setObjectName("RR_9_9")
+        self.RR_10 = QtWidgets.QTextBrowser(Form)
+        self.RR_10.setGeometry(QtCore.QRect(320, 470, 81, 31))
+        self.RR_10.setStyleSheet("background-color: rgba(80, 80, 80, 210);")
+        self.RR_10.setObjectName("RR_10")
+        self.RR_12_12 = QtWidgets.QTextBrowser(Form)
+        self.RR_12_12.setGeometry(QtCore.QRect(400, 530, 201, 31))
+        self.RR_12_12.setStyleSheet("background-color: rgba(100, 100, 100, 210);")
+        self.RR_12_12.setObjectName("RR_12_12")
         self.graphicsView.raise_()
         self.Overlay_Opacity.raise_()
         self.Flag_Register.raise_()
@@ -304,38 +297,38 @@ class Ui_Form(object):
         self.Memory_LCD.raise_()
         self.Bus_LCD.raise_()
         self.Program_Counter_LCD.raise_()
-        self.RR_1.raise_()
-        self.RR_0.raise_()
         self.RR_2.raise_()
+        self.RR_1.raise_()
         self.RR_3.raise_()
-        self.RR_5.raise_()
+        self.RR_4.raise_()
         self.RR_6.raise_()
         self.RR_7.raise_()
-        self.RR_4.raise_()
-        self.RR_6_6.raise_()
-        self.RR_3_3.raise_()
+        self.RR_8.raise_()
+        self.RR_5.raise_()
         self.RR_7_7.raise_()
-        self.RR_2_2.raise_()
         self.RR_4_4.raise_()
         self.RR_8_8.raise_()
+        self.RR_3_3.raise_()
         self.RR_5_5.raise_()
-        self.RR_0_0.raise_()
-        self.RR_13_13.raise_()
-        self.RR_14.raise_()
-        self.RR_10_10.raise_()
-        self.RR_11.raise_()
+        self.RR_1_1.raise_()
+        self.RR_6_6.raise_()
+        self.RR_2_2.raise_()
         self.RR_14_14.raise_()
         self.RR_15.raise_()
-        self.RR_10.raise_()
-        self.RR_15_15.raise_()
-        self.RR_12.raise_()
-        self.RR_8.raise_()
-        self.RR_9_9.raise_()
-        self.RR_12_12.raise_()
-        self.RR_13.raise_()
-        self.RR_1_1.raise_()
-        self.RR_9.raise_()
         self.RR_11_11.raise_()
+        self.RR_12.raise_()
+        self.RR_15_15.raise_()
+        self.RR_16.raise_()
+        self.RR_11.raise_()
+        self.RR_16_16.raise_()
+        self.RR_13.raise_()
+        self.RR_9.raise_()
+        self.RR_10_10.raise_()
+        self.RR_13_13.raise_()
+        self.RR_14.raise_()
+        self.RR_9_9.raise_()
+        self.RR_10.raise_()
+        self.RR_12_12.raise_()
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -411,7 +404,6 @@ class Ui_Form(object):
                                               "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
                                               "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#ffffff;\"> Zero:</span></p></body></html>"))
         self.groupBox.setTitle(_translate("Form", "Arithmetic Logic Unit"))
-<<<<<<< HEAD
         self.B_Register.setHtml(_translate("Form",
                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -449,297 +441,94 @@ class Ui_Form(object):
                                                  "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
                                                  "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">Current Instruction:</span></p></body></html>"))
         self.RR_2.setHtml(_translate("Form",
-=======
-        self.B_Register.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                        "p, li { white-space: pre-wrap; }\n"
-                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p>\n"
-                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Register B</span></p>\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
-        self.A_Register.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                        "p, li { white-space: pre-wrap; }\n"
-                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p>\n"
-                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Register A</span></p>\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
-        self.Output_Register.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                        "p, li { white-space: pre-wrap; }\n"
-                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p>\n"
-                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Output Register</span></p></body></html>"))
-        self.Sum_Register.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                        "p, li { white-space: pre-wrap; }\n"
-                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Sum Register</span></p></body></html>"))
-        self.Instruction_Text.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                        "p, li { white-space: pre-wrap; }\n"
-                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">Current Instruction:</span></p></body></html>"))
-        self.RR_1.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">1</span></p></body></html>"))
         self.RR_1.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">1</span></p></body></html>"))
-        self.RR_0.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">0</span></p></body></html>"))
         self.RR_3.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">0</span></p></body></html>"))
-        self.RR_2.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">2</span></p></body></html>"))
         self.RR_4.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">2</span></p></body></html>"))
-        self.RR_3.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">3</span></p></body></html>"))
         self.RR_6.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">3</span></p></body></html>"))
-        self.RR_5.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">5</span></p></body></html>"))
         self.RR_7.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">5</span></p></body></html>"))
-        self.RR_6.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">6</span></p></body></html>"))
         self.RR_8.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">6</span></p></body></html>"))
-        self.RR_7.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">7</span></p></body></html>"))
         self.RR_5.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">7</span></p></body></html>"))
-        self.RR_4.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">4</span></p></body></html>"))
         self.RR_15.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">4</span></p></body></html>"))
-        self.RR_6_6.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">6</p></body></html>"))
-        self.RR_3_3.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">3</p></body></html>"))
-        self.RR_7_7.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7</p></body></html>"))
-        self.RR_2_2.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2</p></body></html>"))
-        self.RR_4_4.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4</p></body></html>"))
-        self.RR_8_8.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">8</p></body></html>"))
-        self.RR_5_5.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">5</p></body></html>"))
-        self.RR_0_0.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">0</p></body></html>"))
-        self.RR_13_13.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">13</p></body></html>"))
-        self.RR_14.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">14</span></p></body></html>"))
         self.RR_12.setHtml(_translate("Form",
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">14</span></p></body></html>"))
-        self.RR_10_10.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">10</p></body></html>"))
-        self.RR_11.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">11</span></p></body></html>"))
         self.RR_16.setHtml(_translate("Form",
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">11</span></p></body></html>"))
-        self.RR_14_14.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">14</p></body></html>"))
-        self.RR_15.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">15</span></p></body></html>"))
         self.RR_11.setHtml(_translate("Form",
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">15</span></p></body></html>"))
-        self.RR_10.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">10</span></p></body></html>"))
         self.RR_13.setHtml(_translate("Form",
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">10</span></p></body></html>"))
-        self.RR_15_15.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">15</p></body></html>"))
-        self.RR_12.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">12</span></p></body></html>"))
         self.RR_9.setHtml(_translate("Form",
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">12</span></p></body></html>"))
-        self.RR_8.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                      "p, li { white-space: pre-wrap; }\n"
                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">8</span></p></body></html>"))
         self.RR_14.setHtml(_translate("Form",
-=======
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">8</span></p></body></html>"))
-        self.RR_9_9.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">9</p></body></html>"))
-        self.RR_12_12.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">12</p></body></html>"))
-        self.RR_13.setHtml(_translate("Form",
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                       "p, li { white-space: pre-wrap; }\n"
                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-<<<<<<< HEAD
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">13</span></p></body></html>"))
         self.RR_10.setHtml(_translate("Form",
                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -749,29 +538,6 @@ class Ui_Form(object):
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">9</span></p></body></html>"))
 
 
-=======
-                                      "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">13</span></p></body></html>"))
-        self.RR_1_1.setHtml(_translate("Form",
-                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                       "p, li { white-space: pre-wrap; }\n"
-                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1</p></body></html>"))
-        self.RR_9.setHtml(_translate("Form",
-                                     "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                     "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                     "p, li { white-space: pre-wrap; }\n"
-                                     "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">9</span></p></body></html>"))
-        self.RR_11_11.setHtml(_translate("Form",
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">11</p></body></html>"))
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
 import Background_rc_rc
 
 def update_ui(json_values, allValues, ui):
@@ -913,220 +679,7 @@ def set_up_connection(source, ui, json_values, app, Form):
                     current_clock == "1" and previous_clock == "0"):
                 json_values = interpreter.interpret(allValues, json_values)
                 previous_clock = current_clock
-<<<<<<< HEAD
                 update_ui(json_values, allValues, ui)
-=======
-                # LCD updates - Bus, A, B, Output, PC, Memory, Sum
-                ui.Bus_LCD.display(json_values["ui_variables"]["bus_display"])
-
-                ui.A_LCD.display(json_values["ui_variables"]["a_register_display"])
-
-                ui.B_LCD.display(json_values["ui_variables"]["b_register_display"])
-
-                ui.Output_LCD.display(json_values["ui_variables"]["output_register_display"])
-
-                ui.Program_Counter_LCD.display(json_values["ui_variables"]["program_counter"])
-
-                ui.Memory_LCD.display(json_values["ui_variables"]["memory_address_register"])
-
-                ui.Sum_LCD.display(json_values["ui_variables"]["sum_register_display"])
-
-                # Instruction Register update
-                ui.Instruction_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                              "p, li { white-space: pre-wrap; }\n"
-                                                                              "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">Current Instruction:</span></p>\n"
-                                                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">" +
-                                                                              json_values["ui_variables"][
-                                                                                  "instruction_register"] + "</span></p></body></html>"))
-
-                # layman's intepretation update
-                ui.State_Description_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                                    "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                                    "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                                    "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">" +
-                                                                                    json_values["ui_variables"][
-                                                                                        "laymans"] + "</span></p>\n"
-                                                                                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
-                                                                                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
-                # carry flag update
-                ui.Carry_Flag.setChecked(bool(json_values["ui_variables"]["carry_flag"]))
-
-                # zero flag update
-                ui.Zero_Flag.setChecked(bool(json_values["ui_variables"]["zero_flag"]))
-
-                # Clock update
-                ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
-                if allValues[0] == "1":
-                    ui.Clock_Text.setStyleSheet(
-                        QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
-                    ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
-                else:
-                    ui.Clock_Text.setStyleSheet(
-                        QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
-
-                # Ram Registers
-                ui.RR_0_0.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "0"] + "</span></p></body></html>"))
-
-                ui.RR_1_1.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "1"] + "</span></p></body></html>"))
-
-                ui.RR_2_2.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "2"] + "</span></p></body></html>"))
-
-                ui.RR_3_3.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "3"] + "</span></p></body></html>"))
-
-                ui.RR_4_4.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "4"] + "</span></p></body></html>"))
-
-                ui.RR_5_5.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "5"] + "</span></p></body></html>"))
-
-                ui.RR_6_6.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "6"] + "</span></p></body></html>"))
-
-                ui.RR_7_7.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "7"] + "</span></p></body></html>"))
-
-                ui.RR_8_8.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "8"] + "</span></p></body></html>"))
-
-                ui.RR_9_9.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                    "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                    json_values["ui_variables"][
-                                                                        "9"] + "</span></p></body></html>"))
-
-                ui.RR_10_10.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "10"] + "</span></p></body></html>"))
-
-                ui.RR_11_11.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "11"] + "</span></p></body></html>"))
-
-                ui.RR_12_12.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "12"] + "</span></p></body></html>"))
-
-                ui.RR_13_13.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "13"] + "</span></p></body></html>"))
-
-                ui.RR_14_14.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "14"] + "</span></p></body></html>"))
-
-                ui.RR_15_15.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                      "p, li { white-space: pre-wrap; }\n"
-                                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +
-                                                                      json_values["ui_variables"][
-                                                                          "15"] + "</span></p></body></html>"))
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
 
             QtCore.QCoreApplication.processEvents()
             QtGui.QGuiApplication.quitOnLastWindowClosed()
@@ -1166,7 +719,6 @@ def set_up_connection(source, ui, json_values, app, Form):
                 if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
                         current_clock == "1" and previous_clock == "0"):
 
-<<<<<<< HEAD
                     # update current clock value
                     if current_clock == "1":
                         json_values["ui_variables"]["clock_pulse"] = "High Voltage"
@@ -1175,196 +727,6 @@ def set_up_connection(source, ui, json_values, app, Form):
                     json_values = interpreter.interpret(allValues, json_values)
                     previous_clock = current_clock
                     update_ui(json_values, allValues, ui)
-=======
-                    json_values = interpreter.interpret(allValues, json_values)
-                    previous_clock = current_clock
-
-
-                    # LCD updates - Bus, A, B, Output, PC, Memory, Sum
-                    ui.Bus_LCD.display(json_values["ui_variables"]["bus_display"])
-
-                    ui.A_LCD.display(json_values["ui_variables"]["a_register_display"])
-
-                    ui.B_LCD.display(json_values["ui_variables"]["b_register_display"])
-
-                    ui.Output_LCD.display(json_values["ui_variables"]["output_register_display"])
-
-                    ui.Program_Counter_LCD.display(json_values["ui_variables"]["program_counter"])
-
-                    ui.Memory_LCD.display(json_values["ui_variables"]["memory_address_register"])
-
-                    ui.Sum_LCD.display(json_values["ui_variables"]["sum_register_display"])
-
-
-                    # Instruction Register update
-                    ui.Instruction_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                                "p, li { white-space: pre-wrap; }\n"
-                                                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">Current Instruction:</span></p>\n"
-                                                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#000000;\">" +json_values["ui_variables"]["instruction_register"] + "</span></p></body></html>"))
-
-
-
-
-                    # layman's intepretation update
-                    ui.State_Description_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                               "p, li { white-space: pre-wrap; }\n"
-                                                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">" +json_values["ui_variables"]["laymans"] + "</span></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
-                    # carry flag update
-                    ui.Carry_Flag.setChecked(bool(json_values["ui_variables"]["carry_flag"]))
-
-                    # zero flag update
-                    ui.Zero_Flag.setChecked(bool(json_values["ui_variables"]["zero_flag"]))
-
-                    # Clock update
-                    ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                               "p, li { white-space: pre-wrap; }\n"
-                                                                               "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-                                                                               "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Clock</span></p>\n"
-                                                                               "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#ffffff;\">" + interpreter.voltage + "</span></p></body></html>"))
-                    if allValues[0] == "1":
-                        ui.Clock_Text.setStyleSheet(
-                            QtCore.QCoreApplication.translate("form", "background-color: rgb(255, 255, 204);"))
-                        ui.Clock_Text.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                                   "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#000000;\">Clock</span></p>\n"
-                                                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">" + interpreter.voltage + "</span></p></body></html>"))
-                    else:
-                        ui.Clock_Text.setStyleSheet(
-                            QtCore.QCoreApplication.translate("form", "background-color: rgba(107, 107, 107, 150);"))
-
-
-
-                    #Ram Registers
-                    ui.RR_0_0.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                 "p, li { white-space: pre-wrap; }\n"
-                                                 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["0"] + "</span></p></body></html>"))
-
-                    ui.RR_1_1.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["1"] + "</span></p></body></html>"))
-
-                    ui.RR_2_2.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["2"] + "</span></p></body></html>"))
-
-                    ui.RR_3_3.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["3"] + "</span></p></body></html>"))
-
-                    ui.RR_4_4.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["4"] + "</span></p></body></html>"))
-
-                    ui.RR_5_5.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["5"] + "</span></p></body></html>"))
-
-                    ui.RR_6_6.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["6"] + "</span></p></body></html>"))
-
-                    ui.RR_7_7.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["7"] + "</span></p></body></html>"))
-
-                    ui.RR_8_8.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["8"] + "</span></p></body></html>"))
-
-                    ui.RR_9_9.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["9"] + "</span></p></body></html>"))
-
-                    ui.RR_10_10.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["10"] + "</span></p></body></html>"))
-
-                    ui.RR_11_11.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["11"] + "</span></p></body></html>"))
-
-                    ui.RR_12_12.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["12"] + "</span></p></body></html>"))
-
-                    ui.RR_13_13.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["13"] + "</span></p></body></html>"))
-
-                    ui.RR_14_14.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["14"] + "</span></p></body></html>"))
-
-                    ui.RR_15_15.setHtml(QtCore.QCoreApplication.translate("Form",
-                                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                                        "p, li { white-space: pre-wrap; }\n"
-                                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">" +json_values["ui_variables"]["15"] + "</span></p></body></html>"))
-
-
-
-
->>>>>>> 9e1afcf9417338fc15d1a92d0929ee0cc69cc956
                 QtCore.QCoreApplication.processEvents()
 
         conn.close()
