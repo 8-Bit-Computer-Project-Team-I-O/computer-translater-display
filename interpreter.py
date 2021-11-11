@@ -149,6 +149,8 @@ def interpret(vals_array, json_vals):
         # if clock epoch is high, counter is incremented
         if get_clock(vals_array) == "High Epoch":
             json_vals["ui_variables"]["program_counter"] += 1
+            if json_vals["ui_variables"]["program_counter"] > 15:
+                json_vals["ui_variables"]["program_counter"] = 0
             json_vals["ui_variables"][current_change] = current_control_word
 
     # for every other case
