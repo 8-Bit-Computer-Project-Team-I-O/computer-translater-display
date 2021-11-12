@@ -24,7 +24,7 @@
 
   "micro_code_eater": {
     "0100000000000100": ["MI,CO", "memory_address_register", 4, "Program counter tells memory address register to run instruction at address #."],
-    "0001010000001000": ["RO,II,CE", "instruction_register", 8, "Current instruction is sent from RAM to the instruction register ant the program counter is incremented."],
+    "0001010000001000": ["RO,II,CE", "instruction_register", 8, "Current instruction is sent from RAM to the instruction register and the program counter is incremented."],
     "0000000000000000": ["NOP", "none", 8, "No operation currently performed by machine code."],
     "0100100000000000": ["MI, IO", "memory_address_register", 4, "Look at the current value in memory address #."],
     "0001001000000000": ["RO, AI", "a_register", 8, "Load the value # into the A register"],
