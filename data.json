@@ -1,7 +1,7 @@
 {
-  "BE Architecture": "False",
+  "BT Architecture": "True",
 
-  "twosComplement": "True",
+  "twosComplement": "False ",
 
   "control_words":{
       "0000": ["No operation (NOP)", "NO-OP"],
@@ -24,7 +24,7 @@
 
   "micro_code_eater": {
     "0100000000000100": ["MI,CO", "memory_address_register", 4, "Program counter tells memory address register to run instruction at address #."],
-    "0001010000001000": ["RO,II,CE", "instruction_register", 8, "Current instruction is sent from RAM to the instruction register ant the program counter is incremented."],
+    "0001010000001000": ["RO,II,CE", "instruction_register", 8, "Current instruction is sent from RAM to the instruction register and the program counter is incremented."],
     "0000000000000000": ["NOP", "none", 8, "No operation currently performed by machine code."],
     "0100100000000000": ["MI, IO", "memory_address_register", 4, "Look at the current value in memory address #."],
     "0001001000000000": ["RO, AI", "a_register", 8, "Load the value # into the A register"],
@@ -34,6 +34,22 @@
     "0010000100000000":["RI,AO", "#", 8, "Store the current value # from the A register into address & in memory."],
     "0000101000000000": ["IO,AI", "a_register", 4, "Load the value # from the instruction register into the A register"],
     "0000100000000010": ["IO, J", "program_counter", 4, "Jump to address # in memory"],
+    "0000000100010000": ["AO,OI", "output_register", 8, "Send the value in the A register to the output register"],
+    "1000000000000000": ["HLT", "none", 8, "Stop operation of the computer"]
+  },
+
+  "micro_code_bastian": {
+    "0100000000000010": ["MI,CO", "memory_address_register", 4, "Program counter tells memory address register to run instruction at address #."],
+    "0001010000001000": ["RO,II,CE", "instruction_register", 8, "Current instruction is sent from RAM to the instruction register and the program counter is incremented."],
+    "0000000000000000": ["NOP", "none", 8, "No operation currently performed by machine code."],
+    "0100100000000000": ["MI, IO", "memory_address_register", 4, "Look at the current value in memory address #."],
+    "0001001000000000": ["RO, AI", "a_register", 8, "Load the value # into the A register"],
+    "0001000000100000": ["RO, BI", "b_register", 8, "Load the value # into the B register"],
+    "0000001010000000": ["AI,EO", "a_register add", 8, "Store the sum # in the A register."],
+    "0000001011000000": ["AI,EO,SU", "a_register sub", 8, "Store the difference # in the A register."],
+    "0010000100000000":["RI,AO", "#", 8, "Store the current value # from the A register into address & in memory."],
+    "0000101000000000": ["IO,AI", "a_register", 4, "Load the value # from the instruction register into the A register"],
+    "0000100000000001": ["IO, J", "program_counter", 4, "Jump to address # in memory"],
     "0000000100010000": ["AO,OI", "output_register", 8, "Send the value in the A register to the output register"],
     "1000000000000000": ["HLT", "none", 8, "Stop operation of the computer"]
   },

@@ -41,7 +41,7 @@
 
 # BT ARCHITECTURE MUST BE UPDATED TO REFLECT PROPER MICROCODE VALUES
 # BT        INSTRUCTION     STEP    HLT MI  RI  RO  IO  II  AI  AO      ΣO  SU  BO  BI  OI  CE  CO  J
-# FETCH     XXXX            000     0   1   0   0   0   0   0   0       0   0   0   0   0   1   0   0
+# FETCH     XXXX            000     0   1   0   0   0   0   0   0       0   0   0   0   0   0   1   0
 #           XXXX            001     0   0   0   1   0   1   0   0       0   0   0   0   1   0   0   0
 #
 #           0000            010     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
@@ -53,12 +53,12 @@
 #           0001            100     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #
 #           0010            010     0   1   0   0   1   0   0   0       0   0   0   0   0   0   0   0
-# ADD       0010            011     0   0   0   1   0   0   0   0       0   0   1   0   0   0   0   0
-#           0010            100     0   0   0   0   0   0   1   0       1   0   0   0   0   0   0   1
+# ADD       0010            011     0   0   0   1   0   0   0   0       0   0   0   1   0   0   0   0
+#           0010            100     0   0   0   0   0   0   1   0       1   0   0   0   0   0   0   0
 #
 #           0011            010     0   1   0   0   1   0   0   0       0   0   0   0   0   0   0   0
 # SUB       0011            011     0   0   0   1   0   0   0   0       0   0   1   0   0   0   0   0
-#           0011            100     0   0   0   0   0   0   1   0       1   1   0   0   0   0   0   1
+#           0011            100     0   0   0   0   0   0   1   0       1   1   0   0   0   0   0   0
 #
 #           0100            010     0   1   0   0   1   0   0   0       0   0   0   0   0   0   0   0
 # STA       0100            011     0   0   1   0   0   0   0   1       0   0   0   0   0   0   0   0
@@ -68,7 +68,7 @@
 # LDI       0101            011     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #           0101            100     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #
-#           0110            010     0   0   0   0   1   0   0   0       0   0   0   0   0   0   1   0
+#           0110            010     0   0   0   0   1   0   0   0       0   0   0   0   0   0   0   1
 # JMP       0110            011     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #           0110            100     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #
@@ -123,7 +123,7 @@ def convert_binary_to_int(mc_code, vals_array, json_vals):
 
 def interpret(vals_array, json_vals):
     # check which microcode values to use
-    if json_vals["BE Architecture"] == "False":
+    if json_vals["BT Architecture"] == "False":
         mc_code = "micro_code_eater"
     else:
         mc_code = "micro_code_bastian"
@@ -250,6 +250,26 @@ def interpret(vals_array, json_vals):
             # update sum register and a register
             json_vals["ui_variables"]["sum_register"] = sum_reg
 
+        if current_change == "a_register add" and get_clock(vals_array) == "Low Epoch":
+            # store a reference to the current subtraction
+            sum_reg = json_vals["ui_variables"]["a_register"] + \
+                      json_vals["ui_variables"]["b_register"]
+
+            # toggle the right bits
+            if sum_reg > 255:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 1
+                sum_reg = sum_reg - 256
+            else:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 0
+
+            if sum_reg == 0:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 0
+
+            # update sum register and a register
+            json_vals["ui_variables"]["sum_register"] = sum_reg
+
         # if the subtraction flag is set and the voltage is high, we simply set any flags that there might be
         # and update the a register along with the sum register after the a register's value has been changed
         if current_change == "a_register sub" and get_clock(vals_array) == "High Epoch":
@@ -302,8 +322,22 @@ def interpret(vals_array, json_vals):
 
             # update sum register and a register
             json_vals["ui_variables"]["a_register"] = json_vals["ui_variables"]["sum_register"]
-            json_vals["ui_variables"]["sum_register"] = json_vals["ui_variables"]["a_register"] + \
+            sum_reg = json_vals["ui_variables"]["a_register"] + \
                                                         json_vals["ui_variables"]["b_register"]
+            # toggle the right bits
+            if sum_reg > 255:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 1
+                sum_reg = sum_reg - 256
+            else:
+                json_vals["ui_variables"]["carry_flag_toggle"] = 0
+
+            if sum_reg == 0:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 1
+            else:
+                json_vals["ui_variables"]["zero_flag_toggle"] = 0
+            # update sum register and a register
+            json_vals["ui_variables"]["sum_register"] = sum_reg
+
 
     if json_vals["twosComplement"] == "True":
         if json_vals["ui_variables"]["a_register"] > 127:
