@@ -10,11 +10,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 import json
 import socket
-from PyQt5.QtGui import QFont, QKeySequence
-from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtGui import QFont
 
 import interpreter
-#from EmulatorGUI import GPIO
 import RPi.GPIO as GPIO
 
 try_setup = True
