@@ -14,8 +14,8 @@ from PyQt5.QtGui import QFont, QKeySequence
 from PyQt5.QtWidgets import QShortcut
 
 import interpreter
-from EmulatorGUI import GPIO
-#import RPi.GPIO as GPIO
+#from EmulatorGUI import GPIO
+import RPi.GPIO as GPIO
 
 try_setup = True
 
@@ -651,7 +651,7 @@ def set_up_connection(source, ui, json_values, app, Form):
         GPIO.setup(20, GPIO.IN)
         GPIO.setup(16, GPIO.IN)
         GPIO.setup(12, GPIO.IN)
-        #GPIO.setup(1, GPIO.IN)
+        GPIO.setup(1, GPIO.IN)
         GPIO.setup(7, GPIO.IN)
         GPIO.setup(8, GPIO.IN)
         GPIO.setup(25, GPIO.IN)
@@ -668,7 +668,7 @@ def set_up_connection(source, ui, json_values, app, Form):
         GPIO.setup(10, GPIO.IN)
         GPIO.setup(9, GPIO.IN)
         GPIO.setup(11, GPIO.IN)
-        #GPIO.setup(0, GPIO.IN)
+        GPIO.setup(0, GPIO.IN)
         GPIO.setup(5, GPIO.IN)
         GPIO.setup(6, GPIO.IN)
         GPIO.setup(13, GPIO.IN)
@@ -684,10 +684,9 @@ def set_up_connection(source, ui, json_values, app, Form):
                 break
             allValues[0] = str(int(GPIO.input(15)))
 
-            allValues[1] = str(int(GPIO.input(20))) + str(int(GPIO.input(16))) + str(int(GPIO.input(12))) + str(int(GPIO.input(11))) + str(int(GPIO.input(7))) + str(int(GPIO.input(8))) + str(int(GPIO.input(25))) + str(int(GPIO.input(23)))
+            allValues[1] = str(int(GPIO.input(20))) + str(int(GPIO.input(16))) + str(int(GPIO.input(12))) + str(int(GPIO.input(1))) + str(int(GPIO.input(7))) + str(int(GPIO.input(8))) + str(int(GPIO.input(25))) + str(int(GPIO.input(23)))
 
-            allValues[2] = str(int(GPIO.input(21))) + str(int(GPIO.input(2))) + str(int(GPIO.input(3))) + str(int(GPIO.input(4))) + str(int(GPIO.input(17))) + str(int(GPIO.input(27))) + str(int(GPIO.input(22))) + str(int(GPIO.input(10))) + str(int(GPIO.input(9))) + str(int(GPIO.input(11))) + str(int(GPIO.input(11))) + str(int(GPIO.input(5))) + str(int(GPIO.input(6))) + str(int(GPIO.input(13))) + str(int(GPIO.input(19))) + str(int(GPIO.input(26)))
-
+            allValues[2] = str(int(GPIO.input(21))) + str(int(GPIO.input(2))) + str(int(GPIO.input(3))) + str(int(GPIO.input(4))) + str(int(GPIO.input(17))) + str(int(GPIO.input(27))) + str(int(GPIO.input(22))) + str(int(GPIO.input(10))) + str(int(GPIO.input(9))) + str(int(GPIO.input(11))) + str(int(GPIO.input(0))) + str(int(GPIO.input(5))) + str(int(GPIO.input(6))) + str(int(GPIO.input(13))) + str(int(GPIO.input(19))) + str(int(GPIO.input(26)))
 
             current_clock = allValues[0]
             #print(current_clock)
@@ -698,6 +697,7 @@ def set_up_connection(source, ui, json_values, app, Form):
             if previous_clock is None or (current_clock == "0" and previous_clock == "1") or (
                     current_clock == "1" and previous_clock == "0"):
                 # update current clock value
+                print(allValues)
                 if current_clock == "1":
                     json_values["ui_variables"]["clock_pulse"] = "High Voltage"
                 else:
@@ -765,7 +765,7 @@ if __name__ == "__main__":
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form)
-    Form.showFullScreen()
+    Form.show()
     # make a file reader
     f = open('data.json')
 
