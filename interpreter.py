@@ -38,8 +38,6 @@
 # HLT       1111            011     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 #           1111            100     0   0   0   0   0   0   0   0       0   0   0   0   0   0   0   0
 
-
-# BT ARCHITECTURE MUST BE UPDATED TO REFLECT PROPER MICROCODE VALUES
 # BT        INSTRUCTION     STEP    HLT MI  RI  RO  IO  II  AI  AO      ΣO  SU  BO  BI  OI  CE  CO  J
 # FETCH     XXXX            000     0   1   0   0   0   0   0   0       0   0   0   0   0   0   1   0
 #           XXXX            001     0   0   0   1   0   1   0   0       0   0   0   0   1   0   0   0

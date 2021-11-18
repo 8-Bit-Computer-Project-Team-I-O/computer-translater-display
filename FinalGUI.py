@@ -13,7 +13,7 @@ import socket
 from PyQt5.QtGui import QFont
 
 import interpreter
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
 try_setup = True
 
