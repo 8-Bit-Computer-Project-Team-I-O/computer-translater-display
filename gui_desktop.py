@@ -62,7 +62,7 @@ class run_interpreter(QObject):
                 except socket.timeout:
                     allValues = allValues
                 except socket.error:
-                    break
+                    sys.exit(0)
                 finally:
 
                     allValues[2] = str(allValues[2][0:16])
