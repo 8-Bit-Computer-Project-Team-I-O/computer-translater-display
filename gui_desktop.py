@@ -92,6 +92,13 @@ class run_interpreter(QObject):
                     f = open('data.json')
                     # load the json values into a variable
                     json_vals = json.load(f)
+                    # update current clock value
+                    if current_clock == "1":
+                        json_vals["ui_variables"]["clock_pulse"] = "High Voltage"
+                    else:
+                        json_vals["ui_variables"]["clock_pulse"] = "Low Voltage"
+                    json_vals = interpreter.interpret(allValues, json_vals)
+                    previous_clock = current_clock
                     self.clear_value = 0
                     self.finished.emit(json_vals, allValues)
 
