@@ -13,7 +13,7 @@ from PyQt5.Qt import Qt
 import json
 import socket
 from PyQt5.QtCore import QObject, pyqtSignal, QThread
-from PyQt5.QtWidgets import (QApplication, QWidget, QShortcut, QAction, QLabel)
+from PyQt5.QtWidgets import (QApplication, QWidget, QShortcut, QAction, QLabel, QMessageBox)
 from PyQt5.QtGui import QFont, QKeySequence
 
 import interpreter
@@ -26,6 +26,7 @@ try_setup = True
 class run_interpreter(QObject):
     # the signal will send out a dictionary and a list
     finished = QtCore.pyqtSignal(dict, list)
+    wrong_architecture = QtCore.pyqtSignal()
     # make a file reader
     f = open('data.json')
     # load the json values into a variable
@@ -40,8 +41,9 @@ class run_interpreter(QObject):
         json_vals = json.load(f)
         source_values = json_vals["BT Architecture"]
         if (source_values == "True"):
-            print("NOT COMPATIBLE WITH BASTIAN ARCHITECTURE. RUNT WITH BEN EATER ARCHITECTURE")
-            sys.exit(0)
+            #print("NOT COMPATIBLE WITH BASTIAN ARCHITECTURE. RUN WITH BEN EATER ARCHITECTURE")
+            self.wrong_architecture.emit()
+
 
         else:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -108,8 +110,17 @@ class run_interpreter(QObject):
 
 class Ui_Form(object):
     def set_clear(self):
-        print("VALUES CLEARED")
+        msg = QMessageBox()
+        msg.setText("Clearing values on display.")
+        msg.exec_()
         self.interpreter_runner.clear_value = 1
+
+    def wrong_architecture_handler(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Incompatible architecture")
+        msg.setText("Error: set the value for 'BT Architecture' in the data.json file to False")
+        msg.exec_()
+        sys.exit(0)
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -128,6 +139,9 @@ class Ui_Form(object):
 
         # connect the worker thread to the update UI method
         self.interpreter_runner.finished.connect(self.update_values)
+
+        #connect when the wrong architecture is ran
+        self.interpreter_runner.wrong_architecture.connect(self.wrong_architecture_handler)
 
         # run the interpreter in a separate thread
         self.interpreter_runner.moveToThread(self.thread)
