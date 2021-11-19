@@ -111,13 +111,14 @@ class run_interpreter(QObject):
 class Ui_Form(object):
     def set_clear(self):
         msg = QMessageBox()
-        msg.setText("Clearing values on display.")
+        msg.setWindowTitle("Clear Values")
+        msg.setText("Clearing values on display...click 'OK' for reset to take effect")
         msg.exec_()
         self.interpreter_runner.clear_value = 1
 
     def wrong_architecture_handler(self):
         msg = QMessageBox()
-        msg.setWindowTitle("Incompatible architecture")
+        msg.setWindowTitle("Incompatible Architecture")
         msg.setText("Error: set the value for 'BT Architecture' in the data.json file to False")
         msg.exec_()
         sys.exit(0)
