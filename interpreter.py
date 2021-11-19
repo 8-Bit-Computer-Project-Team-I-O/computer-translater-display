@@ -178,7 +178,7 @@ def interpret(vals_array, json_vals):
                 json_vals["ui_variables"][str(current_ram_address)] = current_value
         # if the current change is none, we don't want to change any of the values associated with the micro code
         else:
-            print("Do nothing")
+            #print("Do nothing")
             json_vals["ui_variables"]["bus"] = convert_binary_to_int(mc_code, vals_array, json_vals)
 
         # if the current change is the b_register or the a_register, we are also changing what is in the sum register

@@ -9,11 +9,12 @@
 from time import sleep
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
+from PyQt5.Qt import Qt
 import json
 import socket
-
 from PyQt5.QtCore import QObject, pyqtSignal, QThread
-from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import (QApplication, QWidget, QShortcut, QAction, QLabel)
+from PyQt5.QtGui import QFont, QKeySequence
 
 import interpreter
 import Background_rc_rc
@@ -21,7 +22,6 @@ import Background_rc_rc
 # import RPi.GPIO as GPIO
 
 try_setup = True
-
 
 class run_interpreter(QObject):
     # the signal will send out a dictionary and a list
@@ -31,6 +31,7 @@ class run_interpreter(QObject):
     # load the json values into a variable
     json_vals = json.load(f)
     source_values = json_vals["BT Architecture"]
+    clear_value = 0
 
     def run(self):
         # make a file reader
@@ -52,6 +53,7 @@ class run_interpreter(QObject):
             previous_clock = None
             conn.settimeout(.001)
             allValues = ["0", "00000000", "0000000000000000"]
+
 
             while True:
                 try:
@@ -85,17 +87,32 @@ class run_interpreter(QObject):
                         # update_ui(json_vals, allValues, ui)
                         self.finished.emit(json_vals, allValues)
 
+                if self.clear_value == 1:
+                    # make a file reader
+                    f = open('data.json')
+                    # load the json values into a variable
+                    json_vals = json.load(f)
+                    self.clear_value = 0
+                    self.finished.emit(json_vals, allValues)
+
             conn.close()
             print("closed connection")
 
 
 class Ui_Form(object):
+    def set_clear(self):
+        print("VALUES CLEARED")
+        self.interpreter_runner.clear_value = 1
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1500, 1050)
         Form.setMinimumSize(QtCore.QSize(900, 800))
         Form.setMaximumSize(QtCore.QSize(2000, 1050))
+
+        self.shortcut = QShortcut(QKeySequence('Ctrl+C'), Form)
+        self.shortcut.activated.connect(self.set_clear)
+
         # create the worker thread
         self.thread = QThread()
 
@@ -618,7 +635,6 @@ class Ui_Form(object):
                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">9</span></p></body></html>"))
 
     def update_values(self, json_values, allValues):
-        print("here")
         # Bus update
         self.Bus_LCD.display(json_values["ui_variables"]["bus_display"])
 
