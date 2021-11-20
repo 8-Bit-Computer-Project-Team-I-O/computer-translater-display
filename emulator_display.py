@@ -110,11 +110,11 @@ class run_interpreter(QObject):
 
 class Ui_Form(object):
     def set_clear(self):
+        self.interpreter_runner.clear_value = 1
         msg = QMessageBox()
         msg.setWindowTitle("Clear Values")
-        msg.setText("Clearing values on display...click 'OK' for reset to take effect")
+        msg.setText("Interpreter values have been cleared!")
         msg.exec_()
-        self.interpreter_runner.clear_value = 1
 
     def wrong_architecture_handler(self):
         msg = QMessageBox()

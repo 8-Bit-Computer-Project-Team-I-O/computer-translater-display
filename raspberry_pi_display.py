@@ -13,7 +13,6 @@ import socket
 from PyQt5.QtGui import QFont
 
 import interpreter
-#import RPi.GPIO as GPIO
 
 try_setup = True
 
@@ -533,6 +532,7 @@ class Ui_Form(object):
 
 import Background_rc_rc
 
+
 def update_ui(json_values, allValues, ui):
     # Bus update
     ui.Bus_LCD.display(json_values["ui_variables"]["bus_display"])
@@ -682,12 +682,18 @@ def set_up_connection(source, ui, json_values, app, Form):
                 break
             allValues[0] = str(int(GPIO.input(15)))
 
-            allValues[1] = str(int(GPIO.input(20))) + str(int(GPIO.input(16))) + str(int(GPIO.input(12))) + str(int(GPIO.input(1))) + str(int(GPIO.input(7))) + str(int(GPIO.input(8))) + str(int(GPIO.input(25))) + str(int(GPIO.input(23)))
+            allValues[1] = str(int(GPIO.input(20))) + str(int(GPIO.input(16))) + str(int(GPIO.input(12))) + str(
+                int(GPIO.input(1))) + str(int(GPIO.input(7))) + str(int(GPIO.input(8))) + str(
+                int(GPIO.input(25))) + str(int(GPIO.input(23)))
 
-            allValues[2] = str(int(GPIO.input(21))) + str(int(GPIO.input(2))) + str(int(GPIO.input(3))) + str(int(GPIO.input(4))) + str(int(GPIO.input(17))) + str(int(GPIO.input(27))) + str(int(GPIO.input(22))) + str(int(GPIO.input(10))) + str(int(GPIO.input(9))) + str(int(GPIO.input(11))) + str(int(GPIO.input(0))) + str(int(GPIO.input(5))) + str(int(GPIO.input(6))) + str(int(GPIO.input(13))) + str(int(GPIO.input(19))) + str(int(GPIO.input(26)))
+            allValues[2] = str(int(GPIO.input(21))) + str(int(GPIO.input(2))) + str(int(GPIO.input(3))) + str(
+                int(GPIO.input(4))) + str(int(GPIO.input(17))) + str(int(GPIO.input(27))) + str(
+                int(GPIO.input(22))) + str(int(GPIO.input(10))) + str(int(GPIO.input(9))) + str(
+                int(GPIO.input(11))) + str(int(GPIO.input(0))) + str(int(GPIO.input(5))) + str(
+                int(GPIO.input(6))) + str(int(GPIO.input(13))) + str(int(GPIO.input(19))) + str(int(GPIO.input(26)))
 
             current_clock = allValues[0]
-            #print(current_clock)
+            # print(current_clock)
             # to avoid over-interpretation and wrong results, only run the interpreter
             # and update results on every voltage switch
             # THIS PART IS IMPORTANT!! If it does not check for the current voltage and only update

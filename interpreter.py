@@ -173,8 +173,9 @@ def interpret(vals_array, json_vals):
                     json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI"):
                 current_ram_address = json_vals["ui_variables"]["memory_address_register"]
                 current_value = json_vals["ui_variables"][current_change]
-                if current_value > 127:
-                    current_value -= 256
+                if json_vals["twosComplement"] == "True":
+                    if current_value > 127:
+                        current_value -= 256
                 json_vals["ui_variables"][str(current_ram_address)] = current_value
         # if the current change is none, we don't want to change any of the values associated with the micro code
         else:
