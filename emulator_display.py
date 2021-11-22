@@ -147,7 +147,7 @@ class Ui_Form(object):
         # run the interpreter in a separate thread
         self.interpreter_runner.moveToThread(self.thread)
 
-        # start the thread?
+        # start the thread
         self.thread.started.connect(self.interpreter_runner.run)
 
         self.graphicsView = QtWidgets.QGraphicsView(Form)
