@@ -1,4 +1,4 @@
 #!/bin/bash
 python3 emulator_display.py &
-sleep 1
+sleep 2
 java -jar SAP-1.jar
