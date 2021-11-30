@@ -32,7 +32,7 @@ class Ui_Form(object):
         self.graphicsView.setObjectName("graphicsView")
 
         self.Overlay_Opacity = QtWidgets.QTextBrowser(Form)
-        self.Overlay_Opacity.setGeometry(QtCore.QRect(-30, -30, 1521, 1081))
+        self.Overlay_Opacity.setGeometry(QtCore.QRect(-30, -30, 1600, 1081))
         self.Overlay_Opacity.setStyleSheet("background-color: rgba(255, 255, 255, 100);")
         self.Overlay_Opacity.setObjectName("Overlay_Opacity")
 
