@@ -169,8 +169,8 @@ def interpret(vals_array, json_vals):
             # ram, so fill ram values with the respective bus value
 
             # ALSO REQUIRES A 2'S COMPLEMENT CHECK.
-            if (json_vals["micro_code_eater"][vals_array[2]][0] == "RO, AI" or
-                    json_vals["micro_code_eater"][vals_array[2]][0] == "RO, BI"):
+            if (json_vals[mc_code][vals_array[2]][0] == "RO, AI" or
+                    json_vals[mc_code][vals_array[2]][0] == "RO, BI"):
                 current_ram_address = json_vals["ui_variables"]["memory_address_register"]
                 current_value = json_vals["ui_variables"][current_change]
                 if json_vals["twosComplement"] == "True":
@@ -224,8 +224,9 @@ def interpret(vals_array, json_vals):
 
             # THIS REQUIRES A 2'S COMPLEMENT CHECK, only gets updated everytime .
             current_bus_val = json_vals["ui_variables"]["bus"]
-            if current_bus_val > 127:
-                current_bus_val -= 256
+            if json_vals[twosComplement] == "True":
+                if current_bus_val > 127:
+                    current_bus_val -= 256
 
             json_vals["ui_variables"][str(current_ram_address)] = current_bus_val
 
