@@ -649,7 +649,10 @@ def set_up_connection(source, ui, json_values, app, Form):
     if (source == "True"):
 
         GPIO.setmode(GPIO.BCM)
+        # All bit values are declared from left-to-right how they would be on the actual computer
+
         # Set up Bus reads
+        # LEFT-MOST BIT
         GPIO.setup(20, GPIO.IN)
         GPIO.setup(16, GPIO.IN)
         GPIO.setup(12, GPIO.IN)
@@ -657,10 +660,15 @@ def set_up_connection(source, ui, json_values, app, Form):
         GPIO.setup(7, GPIO.IN)
         GPIO.setup(8, GPIO.IN)
         GPIO.setup(25, GPIO.IN)
+        # RIGHT-MOST BIT
         GPIO.setup(23, GPIO.IN)
+
         # Set up clock reads
         GPIO.setup(15, GPIO.IN)
+
         # Set up microcode reads
+        # LEFT-MOST-BIT
+        GPIO.setup(21, GPIO.IN)
         GPIO.setup(2, GPIO.IN)
         GPIO.setup(3, GPIO.IN)
         GPIO.setup(4, GPIO.IN)
@@ -675,8 +683,8 @@ def set_up_connection(source, ui, json_values, app, Form):
         GPIO.setup(6, GPIO.IN)
         GPIO.setup(13, GPIO.IN)
         GPIO.setup(19, GPIO.IN)
+        # RIGHT-MOST-BIT
         GPIO.setup(26, GPIO.IN)
-        GPIO.setup(21, GPIO.IN)
         # sock = socket.create_connection(("", 9999))
         current_clock = None
         previous_clock = None
