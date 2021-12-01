@@ -1,7 +1,7 @@
 {
   "BT Architecture": "False",
 
-  "twosComplement": "True",
+  "twosComplement": "False",
 
   "control_words":{
       "0000": ["No operation (NOP)", "NO-OP"],

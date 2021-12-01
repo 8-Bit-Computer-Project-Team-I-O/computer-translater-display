@@ -172,7 +172,7 @@ def interpret(vals_array, json_vals):
             if (json_vals[mc_code][vals_array[2]][0] == "RO, AI" or
                     json_vals[mc_code][vals_array[2]][0] == "RO, BI"):
                 current_ram_address = json_vals["ui_variables"]["memory_address_register"]
-                current_value = json_vals["ui_variables"][current_change]
+                current_value = json_vals["ui_variables"]["bus"]
                 if json_vals["twosComplement"] == "True":
                     if current_value > 127:
                         current_value -= 256
