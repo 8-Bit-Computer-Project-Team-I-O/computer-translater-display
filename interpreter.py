@@ -224,7 +224,7 @@ def interpret(vals_array, json_vals):
 
             # THIS REQUIRES A 2'S COMPLEMENT CHECK, only gets updated everytime .
             current_bus_val = json_vals["ui_variables"]["bus"]
-            if json_vals[twosComplement] == "True":
+            if json_vals["twosComplement"] == "True":
                 if current_bus_val > 127:
                     current_bus_val -= 256
 
